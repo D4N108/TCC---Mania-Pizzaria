@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pizzaria Mania - Localização</title>
+<style>
+  /* Reset básico */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    background: #f9f3de;
+    color: #81311a;
+  }
+  
+
+  /* Cabeçalho */
+  header {
+    background-color: #9f2c18;
+    color: #f9f3de;
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 20px;
+  }
+  
+  header nav a {
+      margin: 0 1px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+  header nav a:hover {
+      text-decoration: underline;
+    }
+
+  header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  header .logo-text {
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+  header .logo-text span {
+    display: block;
+  }
+  nav {
+    margin-left: auto;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    font-size: 1rem;
+  }
+  nav ul li {
+    cursor: pointer;
+  }
+
+  
+  .cart-icon {
+    margin-left: 24px;
+    cursor: pointer;
+  }
+  .cart-icon svg {
+    fill: #f9f3de;
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Conteúdo principal */
+  main {
+    display: flex;
+    max-width: 1100px;
+    margin: 30px auto;
+    gap: 40px;
+  }
+
+  /* Sidebar esquerda */
+  aside {
+    background-color: #9f2c18;
+    width: 300px;
+    border-radius: 30px 0 30px 30px;
+    padding: 20px 30px;
+    color: #f9f3de;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-weight: 600;
+  }
+
+  aside h2 {
+    background-color: #f9f3de;
+    color: #9f2c18;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  aside h3 {
+    background-color: #f9f3de;
+    color: #9f2c18;
+    padding: 15px 25px;
+    border-radius: 40px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  aside p,
+  aside a {
+    font-weight: 400;
+    font-size: 1rem;
+    margin-top: 6px;
+  }
+  aside a {
+    display: inline-block;
+    margin-top: 4px;
+  }
+
+  aside textarea {
+    width: 100%;
+    height: 80px;
+    border-radius: 20px;
+    border: none;
+    padding: 15px;
+    resize: none;
+    font-size: 0.9rem;
+    font-style: italic;
+    font-weight: 400;
+    color: #b19b7a;
+  }
+  aside textarea::placeholder {
+    color: #b19b7a;
+  }
+
+  /* Conteúdo central */
+  section.content-center {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  /* Mapa */
+  .map-container {
+    background-color: #556038;
+    border-radius: 25px;
+    padding: 10px;
+  }
+  .map-container iframe,
+  .map-container img {
+    display: block;
+    width: 500px;
+    height: 190px;
+    border-radius: 25px;
+  }
+
+  /* Link abaixo do mapa */
+  .map-link {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #556038;
+  }
+  .map-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Fotos do estabelecimento */
+  .photos-container {
+    background-color: #9f2c18;
+    border-radius: 60px 60px 60px 60px;
+    padding: 30px 40px;
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+    box-sizing: border-box;
+  }
+
+  .photos-container p {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: -30px;
+    font-weight: 600;
+    color: #f9f3de;
+    text-decoration: underline;
+    font-size: 1.1rem;
+  }
+
+  .photos {
+    display: flex;
+    gap: 70px;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #f9f3de;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 8px solid #d97e58;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  .photo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  /* Texto da legenda fotos */
+  .photos-title {
+    text-align: center;
+    font-weight: 600;
+    color: #f9f3de;
+    text-decoration: underline;
+    margin-bottom: 10px;
+  }
+
+  /* Responsividade */
+  @media(max-width: 860px) {
+    main {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      max-width: 95%;
+    }
+    aside {
+      width: 100%;
+      border-radius: 30px;
+      padding: 15px 20px;
+    }
+    .map-container iframe,
+    .map-container img {
+      width: 100%;
+      height: 220px;
+    }
+    .photos-container {
+      max-width: 100%;
+      padding: 20px 10px;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .photos {
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+      nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      }
+          nav {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="https://i.imgur.com/zOJ8hY2.png" alt="Logo Pizzaria Mania" />
+  <div class="logo-text">
+    <span>Pizzaria</span>
+    <span><strong>Mania</strong></span>
+  </div>
+
+  <nav>
+      <a href="pginicial.html">Início</a>
+      <a href="cardapio.html">Cardápio</a>
+      <a href="promo.html">Promoções</a>
+      <a href="locali.html">Localização</a>
+  </nav>
+
+  <div class="cart-icon" title="Carrinho">
+    <!-- Ícone carrinho simples SVG -->
+    <svg viewBox="0 0 24 24" >
+      <path d="M7 18c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm10 0c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm-12-2h13.72l1.68-9H6.5"></path>
+    </svg>
+  </div>
+</header>
+
+<main>
+  <aside>
+    <h2>Endereço</h2>
+    <p>
+      <a href="https://www.google.com.br/maps/place/Parque+Nova+Campinas/@-22.6323919,-43.2606627,668m/data=!3m2!1e3!4b1!4m6!3m5!1s0x99734f054995bb:0x3953810deb100b1c!8m2!3d-22.6323969!4d-43.2580878!16s%2Fg%2F11pkd01hbx?hl=pt-BR&entry=ttu&g_ep=EgoyMDI1MDkxMC4wIKXMDSoASAFQAw%3D%3D" class="map-link" target="_blank" rel="noopener noreferrer">Parque Nova Campinas,<br>Rua 10 lote 37 quadra 9</a>
+    </p>
+
+    <h3>Horário de<br>funcionamento</h3>
+    <p>De quarta a domingo<br>das 18h à 00h</p>
+
+    <h2>Avaliações</h2>
+    <textarea placeholder="Deixe aqui a sua avaliação!"></textarea>
+  </aside>
+
+  <section class="content-center">
+    <div class="map-container">
+      <img src="https://i.imgur.com/rTKa3Yr.png" alt="Mapa localização Pizzaria" />
+    </div>
+    <a href="https://www.google.com.br/maps/place/Parque+Nova+Campinas/@-22.6323919,-43.2606627,668m/data=!3m2!1e3!4b1!4m6!3m5!1s0x99734f054995bb:0x3953810deb100b1c!8m2!3d-22.6323969!4d-43.2580878!16s%2Fg%2F11pkd01hbx?hl=pt-BR&entry=ttu&g_ep=EgoyMDI1MDkxMC4wIKXMDSoASAFQAw%3D%3D" class="map-link" target="_blank" rel="noopener noreferrer">Veja onde estamos!</a>
+
+    <div class="photos-container" aria-label="Fotos do Estabelecimento">
+      <p>Fotos do Estabelecimento</p>
+      <div class="photos">
+        <div class="photo">
+          <img src="https://i.imgur.com/JFNh6Lm.jpg" alt="Foto da pizza 1" />
+        </div>
+        <div class="photo">
+          <img src="https://i.imgur.com/JFNh6Lm.jpg" alt="Foto da pizza 2" />
+        </div>
+        <div class="photo">
+          <img src="https://i.imgur.com/JFNh6Lm.jpg" alt="Foto da pizza 3" />
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>
+
