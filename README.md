@@ -24,7 +24,7 @@ Alunos do 3º módulo do curso Técnico em Informática — CIOB:
 - Ana Luíza da Silva Domingos    
 - Daniel Rodrigues Martins
 - Gabriella da Rocha Venâncio  
-- Monalinsa do Nascimento das Neves  
+- Monalisa do Nascimento das Neves  
 - Mirella Bitencourt Martins  
 - Vitor Palmieri Marinho
 
