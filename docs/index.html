@@ -1,124 +1,299 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pizzaria Mania</title>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Pizzaria Mania</title>
+<link rel="stylesheet" href="style.css">
+<style>
+   main{margin-top:72px}
+  .hero{
+    width:100%;
+    background:linear-gradient(180deg, var(--red), var(--dark-red));
+    padding:18px 0 0;
+  }
+
+  .carousel-wrap{
+    max-width:1180px;
+    margin:0 auto;
+    position:relative;
+    border-radius:6px;
+    overflow:visible;
+    padding:0 14px;
+  }
+
+  .carousel{
+    position:relative;
+    overflow:hidden;
+    border-radius:8px;
+    box-shadow:var(--shadow);
+  }
+
+  .slides{
+    display:flex;
+    transition:transform .7s cubic-bezier(.22,.9,.32,1);
+    will-change:transform;
+  }
+
+  .slide{
+    min-width:100%;
+    height:420px;
+    background-size:cover;
+    background-position:center;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .slide::after{
+    content:"";
+    position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));
+  }
+
+  .slide .inner{
+    position:relative; z-index:2; color:#fff; text-align:left; max-width:1100px; padding:40px;
+    display:flex; gap:30px; align-items:center;
+  }
+
+  .slide .text{
+    max-width:720px;
+  }
+
+  .slide h2{
+    margin:0;font-size:48px;line-height:1.02;letter-spacing:1px;font-weight:900;text-transform:uppercase;
+  }
+  .slide h2 .gold{color:var(--accent)}
+  .slide p{margin-top:10px;font-size:18px;color:rgba(255,255,255,0.95)}
+
+    .arrow{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:56px;height:56px;border-radius:10px;background:rgba(255,255,255,0.12);color:#fff;border:none;display:flex;align-items:center;justify-content:center;font-size:22px;
+    cursor:pointer;backdrop-filter: blur(2px);
+  }
+  .arrow.left{left:10px}
+  .arrow.right{right:10px}
+  .arrow:hover{background:rgba(255,255,255,0.18);transform:translateY(-50%) scale(1.03)}
+
+  /* indicators */
+  .indicators{
+    position:absolute;left:50%;transform:translateX(-50%);
+    bottom:12px;display:flex;gap:8px;z-index:6;}
+  .dot{width:10px;height:10px;background:rgba(255,255,255,0.4);border-radius:999px;cursor:pointer}
+  .dot.active{background:var(--accent);width:18px;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,0.25)}
+
+    
+
+</style>
 </head>
-  <link rel="stylesheet" href="estilos/index.css">
 <body>
-
-  <!-- topo -->
-  <header>
-    <div class="logo">
-      <img src="blob:https://web.whatsapp.com/48027ce9-4de2-4aa5-9c1d-0bcf250a4aa9" alt="Logo Pizzaria" />
-      <h1>Pizzaria Mania</h1>
+<header class="site-header">
+  <div class="header-left">
+    <img class="logo-img" src="https://cdn-icons-png.flaticon.com/512/3595/3595455.png" alt="logo">
+    <div>
+      <div class="site-title">Pizzaria Mania</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.95)">Sabor que conquista</div>
     </div>
-    <nav>
-      <a href="index.html">Início</a>
-      <a href="paginas/cardapio.html">Cardápio</a>
-      <a href="paginas/promo.html">Promoções</a>
-      <a href="paginas/locali.html">Localização</a>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html" title="Início">🏠 <span>Início</span></a>
+    <a href="cardapio.html" title="Cardápio">🍕 <span>Cardápio</span></a>
+    <a href="promocoes.html" title="Promoções">💸 <span>Promoções</span></a>
+    <a href="local.html" title="Localização">📍 <span>Local</span></a>
+    <button id="cartBtn" class="icon-btn">🛒 <span class="cart-count">0</span></button>
+  </nav>
+</header>
 
-      <div class="cart">🛒</div>
-    </nav>
-  </header>
 
-  <!-- baixo -->
-  <section class="hero">
-    <div class="carousel-container" aria-label="Promoções da Pizzaria Mania">
-      <div class="carousel-track">
-        <!-- Slides originais -->
-        <article class="carousel-slide" role="group" aria-label="Promoção 1">
-          <h2>
-            CADA FATIA <br />
-            UMA <span>EXPLOSÃO</span><br />
-            DE <span>SABOR</span>
-          </h2>
-          <p>
-            Deixe sua quarta mais explosiva e experimente nossos sabores! Acesse
-            nosso cardápio e peça já a sua pizza!
-          </p>
-        </article>
-        <article class="carousel-slide" role="group" aria-label="Promoção 2">
-          <h2>🍕 Calabresa <br /> Sabor <span>Inigualável</span></h2>
-          <p>Peça já a pizza Calabresa com ingredientes fresquinhos e sabor marcante!</p>
-        </article>
-        <article class="carousel-slide" role="group" aria-label="Promoção 3">
-          <h2>🍗 Frango com Catupiry <br /> Delícia <span>Clássica</span></h2>
-          <p>Experimente a combinação perfeita de frango e catupiry na sua pizza favorita.</p>
-        </article>
-        <article class="carousel-slide" role="group" aria-label="Promoção 4">
-          <h2>🍅 Marguerita <br /> Sabor <span>Tradicional</span></h2>
-          <p>Pizza Marguerita com molho de tomate fresco e manjericão, uma explosão de sabor.</p>
-        </article>
+<main>
 
-        <!-- Slides duplicados para loop infinito -->
-        <article class="carousel-slide" aria-hidden="true">
-          <h2>
-            CADA FATIA <br />
-            UMA <span>EXPLOSÃO</span><br />
-            DE <span>SABOR</span>
-          </h2>
-          <p>
-            Deixe sua quarta mais explosiva e experimente nossos sabores! Acesse
-            nosso cardápio e peça já a sua pizza!
-          </p>
-        </article>
-        <article class="carousel-slide" aria-hidden="true">
-          <h2>🍕 Calabresa <br /> Sabor <span>Inigualável</span></h2>
-          <p>Peça já a pizza Calabresa com ingredientes fresquinhos e sabor marcante!</p>
-        </article>
-        <article class="carousel-slide" aria-hidden="true">
-          <h2>🍗 Frango com Catupiry <br /> Delícia <span>Clássica</span></h2>
-          <p>Experimente a combinação perfeita de frango e catupiry na sua pizza favorita.</p>
-        </article>
-        <article class="carousel-slide" aria-hidden="true">
-          <h2>🍅 Marguerita <br /> Sabor <span>Tradicional</span></h2>
-          <p>Pizza Marguerita com molho de tomate fresco e manjericão, uma explosão de sabor.</p>
-        </article>
+  <section class="slider">
+    <div class="frame"> 
+      <section class="hero" id="inicio" aria-label="Destaques">
+      <div class="carousel-wrap">
+        <div class="carousel" id="carousel">
+          <div class="slides" id="slides">
+            <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1601924582971-d69f1d6a5e8c?auto=format&fit=crop&w=1400&q=80')">
+              <div class="inner">
+                <div class="text">
+                  <h2><span class="gold">Portuguesa</span> — Patrimônio Brasileiro de Comer</h2>
+                  <p>Promoção especial — válido somente na Pizzaria. Aproveite o sabor tradicional com preço imperdível.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1594007654729-407eedc4be49?auto=format&fit=crop&w=1400&q=80')">
+              <div class="inner">
+                <div class="text">
+                  <h2>🍕 <span class="gold">Calabresa</span> — Sabor Inigualável</h2>
+                  <p>Feita com ingredientes fresquíssimos e muito tempero. Peça agora online ou retire na loja.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1628840042765-356c57aa1c4b?auto=format&fit=crop&w=1400&q=80')">
+              <div class="inner">
+                <div class="text">
+                  <h2>🍗 Frango com Catupiry — <span class="gold">Clássico</span></h2>
+                  <p>Combinação cremosa e irresistível. Garanta a sua mesa hoje mesmo.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1601924582971-d69f1d6a5e8c?auto=format&fit=crop&w=1400&q=80')">
+              <div class="inner">
+                <div class="text">
+                  <h2>🍅 Marguerita — <span class="gold">Tradicional</span></h2>
+                  <p>Molho artesanal, tomate fresco e manjericão. Simples e perfeito.</p>
+                </div>
+              </div>
+            </div>
+
+          </div> <!-- /.slides -->
+
+          <button class="arrow left" id="prev" aria-label="Anterior">‹</button>
+          <button class="arrow right" id="next" aria-label="Próximo">›</button>
+
+          <div class="indicators" id="dots" aria-hidden="false"></div>
+        </div> <!-- /.carousel -->
+      </div> <!-- /.carousel-wrap -->
+    </div>
+    <div class="dots">
+      <span style="display:inline-block;width:12px;height:8px;background:var(--gold);border-radius:6px"></span>
+    </div>
+  </section>
+
+  <section class="cat-strip">
+    <div class="cat-row">
+      <div class="cat" data-scroll="#salgados">
+        <div class="ico">
+          <a href="cardapio.html">🍕</a>
+        </div>
+        <div>Pizzas</div>
+    </div>
+      <div class="cat" data-scroll="#salgados">
+        <div class="ico"><a href="cardapio.html">🥟</a></div>
+        <div>Salgados</div>
+      </div>
+      <div class="cat" data-scroll="#bebidas">
+        <div class="ico"><a href="cardapio.html">🥤</a></div>
+        <div>Bebidas</div>
+      </div>
+      <div class="cat" data-scroll="#doces">
+        <div class="ico"><a href="cardapio.html">🍰</a></div>
+        <div>Doces</div>
       </div>
     </div>
   </section>
 
-  <!-- seleção -->
   <div class="section-title">
-    <h3>Pizzas Mais Pedidas</h3>
+    <h2>Experimente Nossas Delícias</h2>
+    <div class="section-sub">.</div>
   </div>
 
-  <!-- carde -->
-  <section class="cards">
-    <div class="card">
-      <img
-        src="https://superpizzapan.com.br/wp-content/uploads/2024/04/pepperoni.png"
-        alt="Pizza Calabresa"
-      />
-      <div class="tag">🍕 Calabresa</div>
-      <button><a href="cardapio.html">Ir para cardápio</a></button>
-    </div>
-    <div class="card">
-      <img
-        src="https://superpizzapan.com.br/wp-content/uploads/2024/04/pepperoni.png"
-        alt="Pizza Frango com Catupiry"
-      />
-      <div class="tag">🍕 Frango com Catupiry</div>
-      <button><a href="cardapio.html">Ir para cardápio</a></button>
-    </div>
-    <div class="card">
-      <img
-        src="https://superpizzapan.com.br/wp-content/uploads/2024/04/pepperoni.png"
-        alt="Pizza Marguerita"
-      />
-      <div class="tag">🍕 Marguerita</div>
-      <button><a href="cardapio.html">Ir para cardápio</a></button>
+  <section class="container">
+    <div class="grid">
+      <div class="card">
+        <div class="badge-img"><img src="https://receitadodia.com/wp-content/uploads/2023/09/PizzaCalabresa-02.jpg" alt=""></div>
+        <h4>Calabresa</h4><div class="price">R$ 29,90</div><button class="btn add" data-id="pizza_cal" data-name="Pizza Calabresa" data-price="29.90">Adicionar</button>
+      </div>
+      <div class="card">
+        <div class="badge-img"><img src="https://www.ogastronomo.com.br/upload/213355327-pizza-de-frango-com-catupiry.jpg" alt=""></div>
+        <h4>Frango com Catupiry</h4><div class="price">R$ 34,90</div><button class="btn add" data-id="pizza_frc" data-name="Frango com Catupiry" data-price="34.90">Adicionar</button>
+      </div>
+      <div class="card">
+        <div class="badge-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnLSfrVpl7G8H6uNkRv34qqcZbDP_tzLysUg&s" alt=""></div>
+        <h4>Marguerita</h4><div class="price">R$ 28,50</div><button class="btn add" data-id="pizza_mar" data-name="Pizza Marguerita" data-price="28.50">Adicionar</button>
+      </div>
     </div>
   </section>
+</main>
 
-  <!-- negocio do final -->
+<aside class="cart-panel" id="cartPanel">
+  <header><h4>Confira seu pedido</h4>
+    <button id="closeCart" class="icon-btn">✕</button>
+  </header>
+  <div class="cart-items" id="cartItems">
+    
+  </div>
+  <div class="cart-bottom">
+    <div class="total-row">
+      <span>Total</span>
+      <span id="cartTotal">R$ 0,00</span>
+    </div>
+    <button id="checkoutBtn" class="checkout">Finalizar pedido</button>
+  </div>
+</aside>
+
+<button id="floatOrder" class="float-order">🛒 <span id="floatCount">0</span></button>
+
+<script src="script.js" defer></script>
+
+<script>
+  // Simple carousel with auto-play and controls
+  (function(){
+    const slidesEl = document.getElementById('slides');
+    const slides = Array.from(slidesEl.children);
+    const next = document.getElementById('next');
+    const prev = document.getElementById('prev');
+    const dotsWrap = document.getElementById('dots');
+    let index = 0;
+    let autoplay = true;
+    let interval = null;
+
+    function createDots(){
+      dotsWrap.innerHTML = '';
+      slides.forEach((s,i)=>{
+        const d = document.createElement('div');
+        d.className = 'dot' + (i===0? ' active':'');
+        d.addEventListener('click',()=>{goTo(i); resetAuto();});
+        dotsWrap.appendChild(d);
+      });
+    }
+
+    function update(){
+      slidesEl.style.transform = `translateX(-${index * 100}%)`;
+      Array.from(dotsWrap.children).forEach((d,i)=> d.classList.toggle('active', i===index));
+    }
+
+    function goTo(i){
+      index = (i + slides.length) % slides.length;
+      update();
+    }
+
+    next.addEventListener('click', ()=>{ index = (index+1)%slides.length; update(); resetAuto(); });
+    prev.addEventListener('click', ()=>{ index = (index-1+slides.length)%slides.length; update(); resetAuto(); });
+
+    function startAuto(){
+      if(interval) clearInterval(interval);
+      interval = setInterval(()=>{ index = (index+1)%slides.length; update(); }, 5000);
+    }
+    function stopAuto(){ if(interval) clearInterval(interval); interval = null; }
+    function resetAuto(){ stopAuto(); startAuto(); }
+
+    // pause on hover:
+    const carousel = document.getElementById('carousel');
+    carousel.addEventListener('mouseenter', ()=> stopAuto());
+    carousel.addEventListener('mouseleave', ()=> startAuto());
+
+    // init
+    createDots();
+    update();
+    startAuto();
+
+    // category click demo: when clicking a category, scroll to products
+    document.querySelectorAll('.cat').forEach((c,idx)=>{
+      c.addEventListener('click',()=>{
+        document.getElementById('cardapio').scrollIntoView({behavior:'smooth'});
+        // small visual active switch
+        document.querySelectorAll('.cat').forEach(x=>x.classList.remove('active'));
+        c.classList.add('active');
+      })
+    });
+  })();
+</script>
+ <!-- negocio do final -->
   <footer>
     © 2025 Pizzaria Mania - Todos os direitos reservados.
   </footer>
 </body>
-</html>
-
 </html>

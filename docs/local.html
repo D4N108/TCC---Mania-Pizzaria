@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Pizzaria Mania</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+<div class="header-left">
+  <img class="logo-img" src="https://cdn-icons-png.flaticon.com/512/3595/3595455.png">
+  <div class="site-title">Pizzaria Mania</div>
+</div>
+  <nav class="mainnav">
+   <a href="index.html" title="Início">🏠 <span>Início</span></a>
+   <a href="cardapio.html" title="Cardápio">🍕 <span>Cardápio</span></a>
+   <a href="promocoes.html" title="Promoções">💸 <span>Promoções</span></a>
+   <a href="local.html" title="Localização">📍 <span>Local</span></a>
+  <button id="cartBtn" class="icon-btn">🛒 
+    <span class="cart-count">0</span>
+  </button>
+</nav>
+</header>
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1><a href="google.com/maps/place/Parque+Nova+Campinas/@-22.642688,-43.270144,14z/data=!4m6!3m5!1s0x99734f054995bb:0x3953810deb100b1c!8m2!3d-22.6323969!4d-43.2580878!16s%2Fg%2F11pkd01hbx?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D"> Onde nos encontrar</a></h1>
+      <p>Visite nossa unidade ou peça pelo telefone</p>
+    </div>
+  </section>
+  <div class="location-wrap">
+    <div class="loc-left">
+      <h4>Endereço</h4>
+      <div class="box"><strong>Parque Nova Campinas</strong><br>Rua 10 lote 37 quadra 9</div>
+      <h4>Horário de funcionamento</h4>
+      <div class="box">De quarta a domingo das 18h às 00h</div>
+      <h4>Avaliações</h4>
+      <div class="box review-box">
+        <form id="reviewForm" onsubmit="event.preventDefault(); submitReview('reviewForm');">
+          <input type="text" name="name" placeholder="Seu nome" style="width:100%;padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)"><br>
+          <textarea name="msg" placeholder="Deixe aqui a sua avaliação!" style="width:100%;margin-top:8px;padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)"></textarea>
+          <button type="submit">Enviar avaliação</button>
+        </form>
+      </div>
+    </div>
+    <div class="loc-right">
+      <div style="border-radius:12px;overflow:hidden;background:#314b2f;height:240px;margin-bottom:18px"></div>
+      <p style="text-align:center"><a href="google.com/maps/place/Parque+Nova+Campinas/@-22.642688,-43.270144,14z/data=!4m6!3m5!1s0x99734f054995bb:0x3953810deb100b1c!8m2!3d-22.6323969!4d-43.2580878!16s%2Fg%2F11pkd01hbx?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D" target="_blank">Veja onde estamos!</a></p>
+      <div style="background:#fff;padding:18px;border-radius:12px;margin-top:18px">
+        <h4>Contatos</h4>
+        <p><strong>Telefone:</strong> (00) 0000-0000<br><strong>WhatsApp:</strong> 0800 000 000</p>
+      </div>
+    </div>
+  </div>
+</main>
+<aside class="cart-panel" id="cartPanel">
+  <header><h4>Confira seu pedido</h4>
+    <button id="closeCart" class="icon-btn">✕</button>
+  </header>
+  <div class="cart-items" id="cartItems">
+    
+  </div>
+  <div class="cart-bottom">
+    <div class="total-row">
+      <span>Total</span>
+      <span id="cartTotal">R$ 0,00</span>
+    </div>
+    <button id="checkoutBtn" class="checkout">Finalizar pedido</button>
+  </div>
+</aside>
+<button id="floatOrder" class="float-order">🛒 
+  <span id="floatCount">0</span>
+</button>
+<script src="script.js" defer></script>
+ <!-- negocio do final -->
+  <footer>
+    © 2025 Pizzaria Mania - Todos os direitos reservados.
+  </footer>
+</body>
+</html>

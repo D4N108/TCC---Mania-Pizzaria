@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Pizzaria Mania</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-left">
+    <img class="logo-img" src="https://cdn-icons-png.flaticon.com/512/3595/3595455.png">
+    <div>
+      <div class="site-title">Pizzaria Mania</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.9)">Cardápio</div>
+    </div>
+  </div>
+  <nav class="mainnav">
+   <a href="index.html" title="Início">🏠 <span>Início</span></a>
+   <a href="cardapio.html" title="Cardápio">🍕 <span>Cardápio</span></a>
+   <a href="promocoes.html" title="Promoções">💸 <span>Promoções</span></a>
+   <a href="local.html" title="Localização">📍 <span>Local</span></a>
+    <button id="cartBtn" class="icon-btn">🛒 
+      <span class="cart-count">0</span>
+    </button>
+  </nav>
+</header>
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Cardápio</h1>
+      <p>Escolha sua categoria abaixo</p>
+    </div>
+  </section>
+  <section class="cat-strip">
+    <div class="cat-row">
+      <div class="cat active" data-scroll="#combos">
+        <div class="ico">🍕</div>
+        <div>Pizzas</div>
+      </div>
+        <div class="cat" data-scroll="#salgados">
+          <div class="ico">🥟</div>
+          <div>Salgados</div>
+        </div>
+        <div class="cat" data-scroll="#bebidas">
+          <div class="ico">🥤</div>
+          <div>Bebidas</div>
+        </div>
+        <div class="cat" data-scroll="#doces">
+          <div class="ico">🍰</div>
+          <div>Doces</div>
+        </div>
+      </div>
+    </section>
+
+  <div class="container">
+    <section id="combos" class="section">
+      <h3>Pizzas</h3>
+      <div class="grid">
+      <div class="card">
+        <div class="imgwrap">
+          <img src="https://superpizzapan.com.br/wp-content/uploads/2024/04/quatro-queijos.png" alt="">
+        </div>
+        <h4>Quatro Queijos</h4>
+        <div class="price">R$ 45,90</div>
+        <button class="btn add" data-id="combo1" data-name="Combo Família" data-price="45.90">Adicionar</button>
+      </div>
+      <div class="card">
+        <div class="imgwrap">
+          <img src="https://superpizzapan.com.br/wp-content/uploads/2024/04/portuguesa.png" alt=""></div>
+          <h4>Portuguesa</h4>
+          <div class="price">R$ 50,00</div>
+          <button class="btn add" data-id="combo2" data-name="Combo Duplo" data-price="50.00">Adicionar</button>
+        </div>
+      <div class="card">
+        <div class="imgwrap">
+          <img src="https://superpizzapan.com.br/wp-content/uploads/2024/04/calabresa.png" alt="">
+        </div>
+        <h4>Calabresa</h4>
+        <div class="price">R$ 45,00</div>
+        <button class="btn add" data-id="combo3" data-name="Combo Rodízio" data-price="45.00">Adicionar</button>
+      </div>
+    </div>
+  </section>
+
+    <section id="salgados" class="section">
+      <h3>Salgados</h3>
+      <div class="grid">
+      <div class="card">
+        <div class="imgwrap">
+          <img src="https://t4.ftcdn.net/jpg/06/02/67/49/360_F_602674938_OypWU9okuZFx4lH0yjrVhqlIYZnMENEw.jpg" alt="">
+        </div>
+        <h4>Coxinha</h4>
+        <div class="price">R$ 5,90</div>
+        <button class="btn add" data-id="sal1" data-name="Coxinha (6un)" data-price="5.90">Adicionar</button>
+      </div>
+      <div class="card"><div class="imgwrap">
+        <img src="https://static.vecteezy.com/system/resources/previews/021/217/450/non_2x/snack-joelho-food-png.png" alt="">
+      </div>
+      <h4>Joelho</h4>
+      <div class="price">R$ 7,00</div>
+      <button class="btn add" data-id="sal2" data-name="Esfiha (4un)" data-price="7.00">Adicionar</button>
+    </div>
+      <div class="card">
+        <div class="imgwrap">
+          <img src="https://static.vecteezy.com/system/resources/previews/022/556/073/non_2x/pastel-brazilian-snack-traditional-brazilian-pastry-png.png" alt="">
+        </div>
+        <h4>Pastel</h4>
+        <div class="price">R$ 12,00</div>
+        <button class="btn add" data-id="sal3" data-name="Pastel (2un)" data-price="12.00">Adicionar</button>
+      </div>
+    </div>
+  </section>
+
+    <section id="bebidas" class="section">
+      <h3>Bebidas</h3>
+      <div class="grid">
+      <div class="card beverage">
+        <div class="imgwrap">
+          <img src="https://bigbatata.com.br/tecsoftware/conteudo/uploads/2021/02/Refrigerante-2L.png" alt="">
+        </div>
+        <h4>Refrigerante 2L</h4>
+        <div class="price">R$ 9,90</div><button class="btn add" data-id="beb1" data-name="Refrigerante 2L" data-price="9.90">Adicionar</button>
+      </div>
+      <div class="card beverage">
+        <div class="imgwrap">
+          <img src="https://static.vecteezy.com/system/resources/previews/065/389/047/non_2x/fresh-three-fruit-juice-png.png" alt="">
+        </div>
+        <h4>Suco Natural 500ml</h4>
+        <div class="price">R$ 6,90</div>
+        <button class="btn add" data-id="beb2" data-name="Suco 500ml" data-price="6.90">Adicionar</button>
+      </div>
+      <div class="card beverage"><div class="imgwrap">
+        <img src="https://tb0932.vtexassets.com/arquivos/ids/162415/112940.png?v=637705334878500000" alt="">
+      </div>
+      <h4>Água 500ml</h4>
+      <div class="price">R$ 3,50</div>
+      <button class="btn add" data-id="beb3" data-name="Água 500ml" data-price="3.50">Adicionar</button>
+    </div>
+    </div>
+  </section>
+
+    <section id="doces" class="section">
+      <h3>Doces</h3>
+      <div class="grid">
+      <div class="card">
+        <div class="imgwrap">
+          <img src="https://e7.pngegg.com/pngimages/246/479/png-clipart-pizza-molten-chocolate-cake-ice-cream-pancake-pizza-food-recipe-thumbnail.png" alt="">
+        </div><h4>Petit Gateau</h4>
+        <div class="price">R$ 12,90</div>
+        <button class="btn add" data-id="doc1" data-name="Petit Gateau" data-price="12.90">Adicionar</button>
+      </div>
+      <div class="card"><div class="imgwrap">
+        <img src="https://png.pngtree.com/png-clipart/20250705/original/pngtree-delicious-chocolate-brownie-with-vanilla-ice-cream-png-image_21277506.png" alt="">
+      </div>
+      <h4>Brownie</h4>
+      <div class="price">R$ 8,90</div>
+      <button class="btn add" data-id="doc2" data-name="Brownie" data-price="8.90">Adicionar</button>
+    </div>
+      <div class="card"><div class="imgwrap">
+        <img src="https://png.pngtree.com/png-clipart/20250505/original/pngtree-various-flavor-ice-cream-in-bowl-image-isolated-on-white-background-png-image_20795217.png" alt="">
+      </div>
+      <h4>Taça de Sorvete</h4>
+      <div class="price">R$ 14,90</div>
+      <button class="btn add" data-id="doc3" data-name="Taça de Sorvete" data-price="14.90">Adicionar</button>
+    </div>
+    </div>
+  </section>
+  </div>
+</main>
+
+<aside class="cart-panel" id="cartPanel">
+  <header><h4>Confira seu pedido</h4>
+    <button id="closeCart" class="icon-btn">✕</button>
+  </header>
+  <div class="cart-items" id="cartItems">
+    
+  </div>
+  <div class="cart-bottom">
+    <div class="total-row">
+      <span>Total</span>
+      <span id="cartTotal">R$ 0,00</span>
+    </div>
+    <button id="checkoutBtn" class="checkout">Finalizar pedido</button>
+  </div>
+</aside>
+<button id="floatOrder" class="float-order">🛒 
+  <span id="floatCount">0</span>
+</button>
+<script src="script.js" defer></script>
+<script>
+
+  
+</script>
+ <!-- negocio do final -->
+  <footer>
+    © 2025 Pizzaria Mania - Todos os direitos reservados.
+  </footer>
+</body>
+</html>

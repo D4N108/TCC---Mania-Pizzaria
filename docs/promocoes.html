@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Pizzaria Mania</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-left">
+    <img class="logo-img" src="https://cdn-icons-png.flaticon.com/512/3595/3595455.png">
+    <div class="site-title">Pizzaria Mania</div>
+  </div>
+    <nav class="mainnav">
+      <a href="index.html" title="Início">🏠 <span>Início</span></a>
+      <a href="cardapio.html" title="Cardápio">🍕 <span>Cardápio</span></a>
+      <a href="promocoes.html" title="Promoções">💸 <span>Promoções</span></a>
+      <a href="local.html" title="Localização">📍 <span>Local</span></a>
+      <button id="cartBtn" class="icon-btn">🛒 
+        <span class="cart-count">0</span>
+      </button>
+    </nav>
+  </header>
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Promoções</h1>
+      <p>Ofertas exclusivas para você</p>
+    </div>
+  </section>
+  <div class="container">
+    <section class="section"><h3>Ofertas Especiais</h3><div class="grid">
+      <div class="card">
+        <div class="imgwrap">
+          <img src="https://imagens.jotaja.com/produtos/40a59fe2-7ac7-4b0a-b8b1-759d4d1e4cd4.jpg" alt=""></div>
+          <h4>2 Pizzas Grandes + 1 Refri</h4>
+          <div class="price">R$ 106,90</div>
+          <button class="btn add" data-id="promo1" data-name="Promo 2 Pizzas" data-price="106.90">Adicionar</button>
+        </div>
+      <div class="card">
+        <div class="imgwrap">
+          <img src="https://img.freepik.com/fotos-premium/porcao-de-batata-frita-com-maionese-ketchup-mostarda-e-refrigerante_314084-89.jpg" alt=""></div>
+          <h4>Leve 2 Pague 1</h4>
+          <div class="price">R$ 94,90</div>
+          <button class="btn add" data-id="promo2" data-name="Promo Leve2" data-price="94.90">Adicionar</button>
+        </div>
+      <div class="card beverage">
+        <div class="imgwrap">
+          <img src="https://images.unsplash.com/photo-1599468375959-0a67d3a7a9b6?auto=format&w=800" alt=""></div>
+          <h4>Combo Família + Bebida</h4>
+          <div class="price">R$ 89,90</div>
+          <button class="btn add" data-id="promo3" data-name="Promo Família + Bebida" data-price="89.90">Adicionar</button>
+        </div>
+    </div>
+  </section>
+  </div>
+</main>
+<aside class="cart-panel" id="cartPanel">
+  <header><h4>Confira seu pedido</h4>
+    <button id="closeCart" class="icon-btn">✕</button>
+  </header>
+  <div class="cart-items" id="cartItems">
+    
+  </div>
+  <div class="cart-bottom">
+    <div class="total-row">
+      <span>Total</span>
+      <span id="cartTotal">R$ 0,00</span>
+    </div>
+    <button id="checkoutBtn" class="checkout">Finalizar pedido</button>
+  </div>
+</aside>
+<button id="floatOrder" class="float-order">🛒 
+  <span id="floatCount">0</span>
+</button>
+<script src="script.js" defer></script>
+ <!-- negocio do final -->
+  <footer>
+    © 2025 Pizzaria Mania - Todos os direitos reservados.
+  </footer>
+</body>
+</html>
