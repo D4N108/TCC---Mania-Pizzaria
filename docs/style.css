@@ -172,7 +172,7 @@ main{
   display:flex;
   align-items:center;
   justify-content:center;
-  background:#fff;
+  background:var(--green); 
   box-shadow:0 16px 22px rgba(0,0,0,0.06);
   font-size:26px;color:var(--red);margin:0 auto 8px
 }
