@@ -102,6 +102,47 @@ header.site-header {
 /* MAIN */
 main { margin-top: 112px; }
 
+.cat-strip{
+  background:#fff;
+  padding:18px 0;
+  border-bottom:1px solid rgba(0,0,0,0.04)
+}
+.cat-row{
+  max-width:1180px;
+  margin:0 auto;
+  display:flex;
+  justify-content:center;
+  gap:34px;
+  align-items:center;
+  overflow:auto;
+  padding:6px 18px
+}
+.cat{
+  flex:0 0 auto;
+  text-align:center;
+  color:var(--muted);
+  font-weight:800;
+  cursor:pointer
+}
+.cat .ico{
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--gold); 
+  box-shadow:0 16px 22px rgba(0,0,0,0.06);
+  font-size:26px;color:var(--red);margin:0 auto 8px
+}
+.cat.active{
+  color:var(--red)
+}
+.cat.active .ico{
+  border:4px solid rgba(160,48,31,0.12)
+}
+
+
 /* CARDS */
 .grid {
   display: grid;
