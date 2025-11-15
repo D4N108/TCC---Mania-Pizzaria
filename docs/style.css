@@ -271,7 +271,6 @@ main{
   width:120px;
   height:120px;
   border-radius:50%;
-  overflow:hidden;
   border:10px solid #fff;
   box-shadow:0 10px 30px rgba(0,0,0,0.12);
 }
