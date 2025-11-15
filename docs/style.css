@@ -29,7 +29,7 @@ header.site-header{
   top:0;
   left:0;
   right:0;
-  height:72px;
+  height:92px;
   background:var(--red);
   display:flex;
   align-items:center;
@@ -45,13 +45,14 @@ header.site-header{
   gap:12px
 }
 .logo-img {
-  width: 40px;
-  height: auto;
-  padding: 4px;
+  width: auto;
+  height: 72px;
   object-fit: contain;
-  background: none;
+  padding: 4px;
+  background: white;
   border-radius: 0;
 }
+
 
 .site-title{
   font-size: 20px;
@@ -95,7 +96,7 @@ header.site-header{
 
 /* MAIN */
 main{
-  margin-top:92px
+  margin-top:112px
 }
 .hero{
   background:linear-gradient(180deg, rgba(160,48,31,0.95), rgba(120,20,20,0.9));
