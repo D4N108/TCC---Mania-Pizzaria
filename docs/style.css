@@ -263,6 +263,18 @@ main{
   box-shadow: 0 6px 16px rgba(0,0,0,0.25);
   z-index:2;
 }
+.card .badge-img{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  top:-46px;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  overflow:hidden;
+  border:10px solid #fff;
+  box-shadow:0 10px 30px rgba(0,0,0,0.12)
+}
 .card .imgwrap img {
   width: 100%;
   height: auto;
