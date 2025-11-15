@@ -64,10 +64,10 @@ header.site-header{
   gap:18px
 }
 .mainnav a {
-  background-color: var(--red)
+  background-color: var(--red);
   color: #fff;
   padding: 10px 16px;
-  border-radius: 6px;
+  border-radius: 50px;
   font-weight: bold;
   text-decoration: none;
   transition: all 0.3s ease;
