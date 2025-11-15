@@ -273,13 +273,19 @@ main{
   border-radius:50%;
   overflow:hidden;
   border:10px solid #fff;
-  box-shadow:0 10px 30px rgba(0,0,0,0.12)
+  box-shadow:0 10px 30px rgba(0,0,0,0.12);
+}
+.card .imgwrap {
+  overflow:hidden;
+   align-items: center;
+  justify-content: center;
+  display:flex;
 }
 .card .imgwrap img {
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: 12px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  object-fit:cover; 
 }
 }
 .card.h3{
@@ -338,19 +344,19 @@ main{
   gap:10px;
   align-items:center;
   padding:10px 0;
-  border-bottom:1px dashed rgba(0,0,0,0.06)
+  border-bottom:1px dashed rgba(0,0,0,0.06);
 }
 .cart-row img{
   width:68px;
   height:68px;
   border-radius:8px;
-  object-fit:cover
+  object-fit:cover;
 }
 .qty-controls{
   display:flex;
   gap:8px;
   align-items:center;
-  margin-top:8px
+  margin-top:8px;
 }
 .qty-controls button{
   width:30px;
@@ -358,17 +364,17 @@ main{
   border-radius:6px;
   border:none;
   background:rgba(0,0,0,0.06);
-  cursor:pointer
+  cursor:pointer;
 }
 .cart-bottom{
   padding:14px;
-  border-top:1px solid #eee
+  border-top:1px solid #eee;
 }
 .total-row{
   display:flex;
   justify-content:space-between;
   font-weight:900;
-  margin-bottom:10px
+  margin-bottom:10px;
 }
 .checkout{
   background:var(--red);
@@ -386,14 +392,14 @@ main{
   margin:28px auto;padding:0 18px;
   display:flex;
   gap:24px;
-  align-items:flex-start
+  align-items:flex-start;
 }
 .loc-left{
   width:320px;
   background:var(--red);
   color:#fff;
   padding:18px;
-  border-radius:14px
+  border-radius:14px;
 }
 .loc-left h4{
   margin:0 0 8px
@@ -403,7 +409,7 @@ main{
   color:var(--red);
   padding:12px;
   border-radius:12px;
-  margin:12px 0
+  margin:12px 0;
 }
 .loc-right{
   flex:1
@@ -415,7 +421,7 @@ main{
   min-height:90px;
   border-radius:8px;
   border:1px solid rgba(0,0,0,0.08);
-  padding:10px
+  padding:10px;
 }
 .review-box button{
   margin-top:8px;
@@ -424,7 +430,7 @@ main{
   padding:10px 12px;
   border-radius:8px;
   border:none;
-  cursor:pointer
+  cursor:pointer;
 }
 
 /* footer */
@@ -436,7 +442,7 @@ main{
       padding: 15px;
       margin-top: 40px;
       font-size: 14px;
-      margin-bottom: 40px
+      margin-bottom: 40px;
     }
 
 /* responsive */
