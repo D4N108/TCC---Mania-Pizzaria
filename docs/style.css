@@ -97,11 +97,11 @@ header.site-header{
   padding:6px
 }
 .btn.add {
-  background-color: #e63946;
+  background-color: var(--red);
   color: #fff;
   border: none;
   padding: 10px 16px;
-  border-radius: 6px;
+  border-radius: 50px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -437,6 +437,13 @@ main{
     font-size: 16px;
   }
 }
+@media (max-width: 640px) {
+  .mainnav a {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
 
   .icon-btn {
     color: #a3311f;
