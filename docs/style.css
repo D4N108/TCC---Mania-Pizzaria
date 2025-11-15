@@ -138,7 +138,7 @@ header.site-header{
 
 /* MAIN */
 main{
-  margin-top:112px
+  margin-top:112px;
   flex:1;
 }
 .hero{
