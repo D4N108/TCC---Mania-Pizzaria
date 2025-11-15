@@ -177,7 +177,7 @@ main{
 
 /* category strip centered */
 .cat-strip{
-  background:var(--gold);
+  background:#fff;
   padding:18px 0;
   border-bottom:1px solid rgba(0,0,0,0.04)
 }
@@ -205,7 +205,7 @@ main{
   display:flex;
   align-items:center;
   justify-content:center;
-  background:var(--green); 
+  background:var(--gold); 
   box-shadow:0 16px 22px rgba(0,0,0,0.06);
   font-size:26px;color:var(--red);margin:0 auto 8px
 }
@@ -268,8 +268,8 @@ main{
   left:50%;
   transform:translateX(-50%);
   top:-46px;
-  width:100px;
-  height:800px;
+  width:120px;
+  height:120px;
   border-radius:50%;
   overflow:hidden;
   border:10px solid #fff;
