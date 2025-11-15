@@ -258,11 +258,16 @@ main{
   padding:0 18px
 }
 .grid{
-  display:grid;
+  display:flex;
   grid-template-columns:repeat(3,1fr);
-  gap:26px
-}.card {
-  width: 220px;
+  gap:24px
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+
+.card {
+  width: 320px;
   min-height: 280px;
   display: flex;
   flex-direction: column;
