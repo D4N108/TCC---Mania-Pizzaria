@@ -288,11 +288,11 @@ main{
   margin:12px 0 6px;
   color: #333;
 }
-.card .price{
-  font-size 16px;
-  color:var(--red);
-  font-weight:900;
-  margin-bottom:12px
+.card .price {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--red);
+  margin-bottom: 12px;
 }
 .btn{
   background:var(--red);
