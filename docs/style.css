@@ -246,13 +246,13 @@ main{
   gap:26px
 }
 .card{
-  
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  justify-content:space-between;
   background:var(--card);
   border-radius:14px;
   padding:16px
-  text-align:center;
-  position:relative;
-  overflow:visible;
   padding-top:64px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
@@ -277,9 +277,10 @@ main{
 }
 .card .imgwrap {
   overflow:hidden;
-   align-items: center;
+  align-items: center;
   justify-content: center;
   display:flex;
+  border-radius:12px;
 }
 .card .imgwrap img {
   width: 100%;
@@ -298,6 +299,7 @@ main{
   font-weight: bold;
   color: var(--red);
   margin-bottom: 12px;
+  text-align:center;
 }
 .btn{
   background:var(--red);
@@ -306,7 +308,8 @@ main{
   padding:10px 14px;
   border-radius:999px;
   cursor:pointer;
-  font-weight:800
+  font-weight:800;
+  display:inline-block;
 }
 
 
