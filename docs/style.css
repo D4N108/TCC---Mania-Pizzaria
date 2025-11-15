@@ -88,28 +88,18 @@ header.site-header{
   box-shadow: 0 0 10px rgba(252, 163, 17, 0.6);
 }
 
-}
-.icon-btn{
-  background:none;
-  border:none;
-  color:#fff;
-  font-size:20px;
-  cursor:pointer;
-  position:relative;
-  padding:6px
-}
-btn.add {
-  background-color:var(--red);
+.btn.add {
+  background-color: #e63946;
   color: #fff;
   border: none;
   padding: 10px 16px;
-  border-radius: 80px;
+  border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-btn.add:hover {
+.btn.add:hover {
   background-color: #d62828;
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
