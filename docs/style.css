@@ -284,12 +284,12 @@ main{
 
 }
 .card h4{
-  font-size: 52px;
+  font-size: 26px;
   margin:12px 0 6px;
   color: #333;
 }
 .card .price {
-  font-size: 16px;
+  font-size: 22px;
   font-weight: bold;
   color: var(--red);
   margin-bottom: 12px;
