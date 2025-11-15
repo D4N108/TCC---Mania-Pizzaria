@@ -263,33 +263,20 @@ main{
   box-shadow: 0 6px 16px rgba(0,0,0,0.25);
   z-index:2;
 }
-.card .badge-img{
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-  top:-46px;
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  overflow:hidden;
-  border:10px solid #fff;
-  box-shadow:0 10px 30px rgba(0,0,0,0.12)
-}
 .card .imgwrap img {
   width: 100%;
   height: auto;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-
 }
-.card h4{
-  font-size: 26px;
+.card.h4{
+  font-size: 22px;
   margin:12px 0 6px;
   color: #333;
 }
 .card .price {
-  font-size: 22px;
+  font-size: 12px;
   font-weight: bold;
   color: var(--red);
   margin-bottom: 12px;
