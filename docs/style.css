@@ -438,15 +438,51 @@ main{
 
 /* footer */
 
-    footer {
-      background: var(--red);
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
-      font-size: 14px;
-      margin-bottom: 40px;
-    }
+.site-footer {
+  background: var(--red);
+  color: white;
+  padding: 40px 20px;
+  font-size: 14px;
+}
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.footer-box h4 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: var(--gold);
+}
+.footer-box a {
+  color: var(--gold);
+  text-decoration: underline;
+  font-weight: 600;
+}
+.social-icons{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  margin-top:12px
+}
+.social-icons a img {
+  width: 28px;
+  margin-right: 28px;
+  transition: transform 0.3s ease;
+}
+.social-icons a:hover img {
+  transform: scale(1.2);
+  filter:brightness(1.2);
+}
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 20px;
+}
+
 
 /* responsive */
 @media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.cat-row{gap:20px}}
