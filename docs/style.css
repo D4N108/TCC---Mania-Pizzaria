@@ -261,37 +261,41 @@ main{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:26px
-}
-.card{
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
-  justify-content:space-between;
-  background:var(--card);
-  border-radius:14px;
-  padding:16px
-  padding-top:64px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}.card {
+  width: 220px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  background: var(--card);
+  border-radius: 14px;
+  padding: 16px;
+  padding-top: 64px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
 }
+
 
 .card:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 16px rgba(0,0,0,0.25);
   z-index:2;
 }
-.card .badge-img{
-  position:absolute;
-  align-items:center;
-  overflow:hidden;
-  transition:none;
-  left:50%;
-  top:-46px;
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  border:10px solid #fff;
-  box-shadow:0 10px 30px rgba(0,0,0,0.12);
+.card .badge-img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -46px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 10px solid #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  overflow: hidden;
+}
+
 }
 .card .imgwrap {
   overflow:hidden;
@@ -316,8 +320,11 @@ main{
   font-size: 14px;
   font-weight: bold;
   color: var(--red);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   text-align:center;
+}
+.card.btn{
+  margin-top:auto;
 }
 .btn{
   background:var(--red);
