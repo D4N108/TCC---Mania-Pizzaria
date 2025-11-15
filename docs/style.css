@@ -265,8 +265,9 @@ main{
 }
 .card .badge-img{
   position:absolute;
+  overflow:visible;
+  transition:none;
   left:50%;
-  transform:translateX(-50%);
   top:-46px;
   width:120px;
   height:120px;
