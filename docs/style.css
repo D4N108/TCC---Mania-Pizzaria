@@ -81,7 +81,7 @@ header.site-header{
   position:relative;
   padding:6px
 }
-button.btn.add {
+btn.add {
   background-color:var(--red);
   color: #fff;
   border: none;
@@ -92,7 +92,7 @@ button.btn.add {
   transition: all 0.3s ease;
 }
 
-button.btn.add:hover {
+btn.add:hover {
   background-color: #d62828;
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
