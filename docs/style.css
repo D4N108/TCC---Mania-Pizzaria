@@ -214,7 +214,7 @@ main{
   width:64px;
   height:64px;
   border-radius:50%;
-  display:flex;
+  display:inline-block;
   align-items:center;
   justify-content:center;
   background:var(--gold); 
