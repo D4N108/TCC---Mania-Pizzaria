@@ -89,8 +89,8 @@ header.site-header{
   box-shadow: 0 0 10px rgba(252, 163, 17, 0.6);
 }
 .nav-icon {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   object-fit: contain;
   vertical-align:middle;
 }
@@ -273,6 +273,7 @@ main{
 }
 .card .badge-img{
   position:absolute;
+  align-items:center;
   overflow:hidden;
   transition:none;
   left:50%;
@@ -298,12 +299,12 @@ main{
 }
 }
 .card.h3{
-  font-size: 16px;
+  font-size: 18px;
   margin:12px 0 6px;
   color: #333;
 }
 .card .price {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   color: var(--red);
   margin-bottom: 12px;
