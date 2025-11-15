@@ -263,19 +263,33 @@ main{
   box-shadow: 0 6px 16px rgba(0,0,0,0.25);
   z-index:2;
 }
-.card .imgwrap img {
-  width: 100%;
-  height: auto;
+
+.card .imgwrap {
+  height: 180px; 
+  overflow: hidden;
   border-radius: 12px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.card .imgwrap img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1
+}
+
 }
 .card.h3{
+  text-align:center;
   font-size: 16px;
   margin:12px 0 6px;
   color: #333;
 }
 .card .price {
+  text-align:center;
   font-size: 12px;
   font-weight: bold;
   color: var(--red);
