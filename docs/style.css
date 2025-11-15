@@ -63,14 +63,31 @@ header.site-header{
   align-items:center;
   gap:18px
 }
-.mainnav a{
-  color:#fff;
-  font-weight:700;
-  padding:6px 8px;
-  border-radius:80px;
-  display:flex;
-  gap:8px;
-  align-items:center
+.mainnav a {
+  background-color: #e63946; /* vermelho padrão */
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px; /* espaço entre ícone e texto */
+}
+
+.mainnav a:hover {
+  background-color: #d62828; /* tom mais escuro no hover */
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.mainnav a.active {
+  background-color: #fca311; /* cor diferente para indicar página ativa */
+  color: #000;
+  box-shadow: 0 0 10px rgba(252, 163, 17, 0.6);
+}
+
 }
 .icon-btn{
   background:none;
