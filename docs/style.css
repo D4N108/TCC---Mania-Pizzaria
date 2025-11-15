@@ -45,11 +45,10 @@ header.site-header{
   gap:12px
 }
 .logo-img {
-  width: auto;
-  height: 72px;
+  height: 64px;
   object-fit: contain;
   padding: 4px;
-  background: black;
+  background: none;
   border-radius: 0;
 }
 
@@ -64,14 +63,29 @@ header.site-header{
   align-items:center;
   gap:18px
 }
-.mainnav a{
-  color:#fff;
-  font-weight:700;
-  padding:6px 8px;
-  border-radius:6px;
-  display:flex;
-  gap:8px;
-  align-items:center
+.mainnav a {
+  background-color: var(--red);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px; /* espaço entre ícone e texto */
+}
+
+.mainnav a:hover {
+  background-color: #d62828; /* tom mais escuro no hover */
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.mainnav a.active {
+  background-color: #fca311; /* cor diferente para indicar página ativa */
+  color: #000;
+  box-shadow: 0 0 10px rgba(252, 163, 17, 0.6);
 }
 .icon-btn{
   background:none;
@@ -82,6 +96,23 @@ header.site-header{
   position:relative;
   padding:6px
 }
+.btn.add {
+  background-color: var(--red);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn.add:hover {
+  background-color: #d62828;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
 .cart-badge{
   position:absolute;
   top:-6px;
@@ -215,6 +246,7 @@ main{
   gap:26px
 }
 .card{
+  
   background:var(--card);
   border-radius:14px;
   padding:16px;
@@ -223,6 +255,14 @@ main{
   position:relative;
   overflow:visible;
   padding-top:64px
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
 }
 .card .badge-img{
   position:absolute;
@@ -406,6 +446,13 @@ main{
     font-size: 16px;
   }
 }
+@media (max-width: 640px) {
+  .mainnav a {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
 
   .icon-btn {
     color: #a3311f;
