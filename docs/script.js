@@ -11,6 +11,19 @@ function addItem(id, name, price){
   save();
   openCart();
 }
+// Função para destacar o link ativo no cabeçalho
+document.addEventListener("DOMContentLoaded", () => {
+  const path = window.location.pathname; // ex: /cardapio.html
+  const links = document.querySelectorAll(".mainnav a");
+
+  links.forEach(link => {
+    const href = link.getAttribute("href"); // ex: cardapio.html
+    if (path.includes(href)) {
+      link.classList.add("active");
+    }
+  });
+});
+
 
 function removeItem(id){ delete cart[id]; save(); }
 
