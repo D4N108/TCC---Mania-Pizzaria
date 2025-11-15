@@ -87,7 +87,15 @@ header.site-header{
   color: #000;
   box-shadow: 0 0 10px rgba(252, 163, 17, 0.6);
 }
-
+.icon-btn{
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:20px;
+  cursor:pointer;
+  position:relative;
+  padding:6px
+}
 .btn.add {
   background-color: #e63946;
   color: #fff;
