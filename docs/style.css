@@ -63,6 +63,12 @@ header.site-header{
   align-items:center;
   gap:18px
 }
+.mainnav a,
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
 .mainnav a {
   background-color: var(--red);
   color: #fff;
@@ -73,7 +79,7 @@ header.site-header{
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
-  gap: 6px; /* espaço entre ícone e texto */
+  gap: 8px; /* espaço entre ícone e texto */
 }
 
 .mainnav a:hover {
@@ -86,6 +92,11 @@ header.site-header{
   background-color: #fca311; /* cor diferente para indicar página ativa */
   color: #000;
   box-shadow: 0 0 10px rgba(252, 163, 17, 0.6);
+}
+nav.icon{
+  width:20px
+  height:20px;
+  object-fit:contain;
 }
 .icon-btn{
   background:none;
