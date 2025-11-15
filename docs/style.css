@@ -136,6 +136,7 @@ header.site-header{
 /* MAIN */
 main{
   margin-top:112px
+  flex:1;
 }
 .hero{
   background:linear-gradient(180deg, rgba(160,48,31,0.95), rgba(120,20,20,0.9));
