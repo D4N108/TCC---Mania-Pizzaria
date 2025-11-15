@@ -221,6 +221,10 @@ main{
   box-shadow:0 16px 22px rgba(0,0,0,0.06);
   font-size:26px;color:var(--red);margin:0 auto 8px
 }
+.cat.ico:hover{
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
 .cat.active{
   color:var(--red)
 }
