@@ -268,8 +268,8 @@ main{
   left:50%;
   transform:translateX(-50%);
   top:-46px;
-  width:120px;
-  height:120px;
+  width:100px;
+  height:800px;
   border-radius:50%;
   overflow:hidden;
   border:10px solid #fff;
