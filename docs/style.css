@@ -47,14 +47,14 @@ header.site-header{
   align-items:center;
   gap:18px;
 }
-.header-left.img {
+.img-logo {
   max-height: 72px;   /* controla altura */
   width: auto;        /* mantém proporção */
   display: block;
   vertical-align:middle;
   object-fit:contain;
 }
-.header-left.img:hover{
+.img-logo:hover{
    transform: scale(1.08);         /* leve aumento */
   filter: brightness(1.15);       /* brilho suave */
   box-shadow: 0 4px 12px rgba(0,0,0,0.25); /* sombra elegante */
