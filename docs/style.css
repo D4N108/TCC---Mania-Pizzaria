@@ -52,7 +52,7 @@ header.site-header{
   width: auto;        /* mantém proporção */
   display: block;
   object-fit:contain;
-  border-radius:50%;
+  margin-top:0;
 }
 .img-logo:hover{
    transform: scale(1.08);         /* leve aumento */
