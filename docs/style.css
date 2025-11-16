@@ -52,6 +52,7 @@ header.site-header{
   width: auto;        /* mantém proporção */
   display: block;
   object-fit:contain;
+  vertical-align:top;
 }
 .img-logo:hover{
    transform: scale(1.08);         /* leve aumento */
