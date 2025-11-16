@@ -51,8 +51,8 @@ header.site-header{
   max-height: 72px;   /* controla altura */
   width: auto;        /* mantém proporção */
   display: block;
-  vertical-align:middle;
   object-fit:contain;
+  border-radius:50%;
 }
 .img-logo:hover{
    transform: scale(1.08);         /* leve aumento */
