@@ -65,7 +65,7 @@ document.addEventListener('click', (ev)=>{
   if(ev.target.matches('#floatOrder')||ev.target.closest('#floatOrder')) openCart();
   if(ev.target.matches('#checkoutBtn')||ev.target.closest('#checkoutBtn')){
     if(Object.keys(cart).length===0){ alert('Seu carrinho está vazio.'); return; }
-    alert('Simulação de checkout. Total: '+currency(cartTotal())); cart={}; save(); closeCart();
+    cart={}; save(); closeCart();
   }
 });
 
