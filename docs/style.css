@@ -53,7 +53,7 @@ header.site-header{
   display: block;
   object-fit:contain;
   vertical-align:top;
-  margin-top: -60px;
+  margin-top: -64px;
 }
 .img-logo:hover{
    transform: scale(1.08);         /* leve aumento */
