@@ -48,7 +48,7 @@ header.site-header{
   gap:18px;
 }
 .img-logo {
-  max-height: 72px;   /* controla altura */
+  max-height: 64px;   /* controla altura */
   width: auto;        /* mantém proporção */
   display: block;
   object-fit:contain;
