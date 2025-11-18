@@ -165,7 +165,13 @@ main{
   opacity:0.95;
   font-size:16px
 }
-
+.img-wrap{
+    max-height: 200px;   /* controla altura */
+  width: auto;        /* mantém proporção */
+  display: block;
+  object-fit:contain;
+  vertical-align:center;
+}
 
 /* slider arrows/dots (simple) */
 .slider{
