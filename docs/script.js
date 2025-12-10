@@ -1,7 +1,7 @@
 const STORAGE_KEY = 'pm_cart_final_v1';
 let cart = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
 
-const NUMERO_PIZZARIA = "5521983302435"; // <-- TROQUE AQUI SE PRECISAR
+const NUMERO_PIZZARIA = "5521983302435"; // <-- coloque aqui o número correto (somente números, formato internacional sem +)
 
 function currency(v){ 
     return 'R$ ' + Number(v).toFixed(2).replace('.',','); 
@@ -106,6 +106,7 @@ function updateCounts(){
     if(f) f.textContent = cartCount(); 
 }
 
+// Manejo de eventos de clique
 document.addEventListener('click', (ev)=>{
     const add = ev.target.closest('.add'); 
     if(add){ 
@@ -126,25 +127,35 @@ document.addEventListener('click', (ev)=>{
     if(ev.target.matches('#closeCart') || ev.target.closest('#closeCart')) closeCart();
     if(ev.target.matches('#floatOrder')||ev.target.closest('#floatOrder')) openCart();
 
-    // 🚀 WHATSAPP CHECKOUT AQUI
+    // WHATSAPP CHECKOUT AQUI
     if(ev.target.matches('#checkoutBtn') || ev.target.closest('#checkoutBtn')){
+        // evita que um <a> pai navegue imediatamente
+        ev.preventDefault();
+
         if(Object.keys(cart).length === 0){
             alert('Seu carrinho está vazio.');
             return;
         }
 
-        // Criar texto do pedido
+        // Criar texto do pedido: "2x Pizza, 1x Coca"
         let pedidos = Object.values(cart)
             .map(it => `${it.qty}x ${it.name}`)
             .join(', ');
 
-        let total = currency(cartTotal());
+        // Total numérico e moeda
+        let totalValor = cartTotal(); // número puro
+        let totalFormatado = currency(totalValor); // "R$ 12,34"
 
-        let mensagem = `Olá, desejo pedir: ${pedidos}. Total: ${total}`;
+        // Mensagem pedida: "Olá, desejo pedir (pedido) (preço)."
+        let mensagem = `Olá, desejo pedir: ${pedidos} (${totalFormatado}).`;
+
+        // monta URL do WhatsApp
         let url = "https://wa.me/" + NUMERO_PIZZARIA + "?text=" + encodeURIComponent(mensagem);
 
+        // abre em nova aba
         window.open(url, "_blank");
 
+        // limpa carrinho
         cart = {};
         save();
         closeCart();
