@@ -141,44 +141,27 @@
     <p>© 2025 Pizzaria Mania – Todos os direitos reservados.</p>
   </div>
 </footer>
+<script>
+document.getElementById("form-avaliacao").addEventListener("submit", function (e) {
+    e.preventDefault(); // impede o envio normal
 
-  <script>
-function submitReview(formId) {
-    const form = document.getElementById(formId);
+    const formData = new FormData(this);
 
-    const nome = form.name.value.trim();
-    const msg  = form.msg.value.trim();
-
-    if (!nome || !msg) {
-        alert("Por favor, preencha todos os campos.");
-        return;
-    }
-
-    // Enviar para o PHP
     fetch("salvar_avaliacao.php", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `name=${encodeURIComponent(nome)}&msg=${encodeURIComponent(msg)}`
+        body: formData
     })
-    .then(res => res.text())
-    .then(res => {
-        if (res === "ok") {
+    .then(resposta => resposta.text())
+    .then(texto => {
+        alert("Avaliação salva! Agora deixe sua avaliação no Facebook ❤️");
 
-            // PLACE ID REAL DA SUA PIZZARIA
-            const placeID = "ChIJt-qp2KsMmQARBDG-u-0u0Gk";
+        // Abre diretamente a página de avaliações do Facebook
+        window.open("https://www.facebook.com/SUA_PAGINA/reviews", "_blank");
 
-            // Abrir tela de avaliação do Google
-            const url = `https://search.google.com/local/writereview?placeid=${placeID}`;
-            window.open(url, "_blank");
-
-            alert("Obrigado pela sua avaliação!");
-
-            form.reset();
-        } else {
-            alert("Erro ao salvar a avaliação: " + res);
-        }
+        // limpa o formulário
+        document.getElementById("form-avaliacao").reset();
     });
-}
+});
 </script>
 
   
