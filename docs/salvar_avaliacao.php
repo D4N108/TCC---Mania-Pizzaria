@@ -1,26 +1,30 @@
 <?php
-/* Conexão */
-$pdo = new PDO("mysql:host=localhost;dbname=avaliacao;charset=utf8", "root", "");
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "avaliacao";
 
-/* Dados do formulário (name e msg) */
-$nome = $_POST['name'] ?? '';
-$comentario = $_POST['msg'] ?? '';
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-if (empty($nome) || empty($comentario)) {
-    echo "Erro: campos vazios.";
-    exit;
+if ($conn->connect_error) {
+    die("Erro de conexão: " . $conn->connect_error);
 }
 
-/* 1️⃣ Inserir cliente */
-$stmt_cliente = $pdo->prepare("INSERT INTO clientes (nome) VALUES (?)");
-$stmt_cliente->execute([$nome]);
+$nome = $_POST["nome"];
+$avaliacao = $_POST["avaliacao"];
 
-$id_cliente = $pdo->lastInsertId();
+// Insere cliente
+$sql_cliente = "INSERT INTO clientes (nome) VALUES ('$nome')";
+$conn->query($sql_cliente);
 
-/* 2️⃣ Inserir avaliação */
-$stmt_avaliacao = $pdo->prepare("INSERT INTO avaliacoes (id_cliente, comentario) VALUES (?, ?)");
-$stmt_avaliacao->execute([$id_cliente, $comentario]);
+// Pega o id do cliente inserido
+$id_cliente = $conn->insert_id;
 
-echo "ok";
+// Insere avaliação vinculada ao cliente
+$sql_avaliacao = "INSERT INTO avaliacoes (id_cliente, avaliacao) VALUES ($id_cliente, '$avaliacao')";
+$conn->query($sql_avaliacao);
+
+$conn->close();
+
+echo "OK";
 ?>
