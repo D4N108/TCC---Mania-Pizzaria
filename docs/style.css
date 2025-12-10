@@ -511,7 +511,10 @@ main{
   font-weight: 600;
   font-size: 14px;
 }
-
+.footer-box a:hover{
+  color:white;
+  filter:brightness(1.05);
+}
 .social-icons {
   margin-top: 12px;
   display: flex;
