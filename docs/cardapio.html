@@ -225,11 +225,11 @@
     <p>© 2025 Pizzaria Mania – Todos os direitos reservados.</p>
   </div>
 </footer>
-  <script>// FINALIZAR PEDIDO COM PROMPT — SEM APAGAR NADA
-document.getElementById("checkoutBtn").addEventListener("click", function (e) {
-    e.preventDefault(); // impede o link de abrir sem mensagem
 
-    // Recupera o carrinho como já é usado no seu código
+  <script>
+ document.getElementById("checkoutBtn").addEventListener("click", function (e) {
+    e.preventDefault();
+
     let cart = JSON.parse(localStorage.getItem('pm_cart_final_v1') || '{}');
     let items = Object.values(cart);
 
@@ -238,28 +238,24 @@ document.getElementById("checkoutBtn").addEventListener("click", function (e) {
         return;
     }
 
-    // Monta lista de itens
+    // monta o pedido
     let pedido = items.map(i => `${i.qty}x ${i.name}`).join(", ");
-    let total = items.reduce((s, i) => s + i.price * i.qty, 0);
-    total = total.toFixed(2).replace(".", ",");
+    let total = items.reduce((s, i) => s + i.price * i.qty, 0).toFixed(2).replace('.', ',');
 
-    // Prompt que você pediu
+    // prompt da mensagem
     let extra = prompt("Deseja adicionar alguma observação ao pedido? (opcional)");
 
-    // Mensagem final
-    let mensagem = `Olá, desejo pedir: ${pedido}. Total: R$ ${total}.`;
+    let mensagem = `Olá, desejo pedir ${pedido}. Total: R$ ${total}.`;
+
     if (extra && extra.trim() !== "") {
-        mensagem += ` Observação: ${extra.trim()}`;
+        mensagem += " Observação: " + extra.trim();
     }
 
-    // Codifica para URL
     mensagem = encodeURIComponent(mensagem);
 
-    // Numero do whatsapp
     let numero = "5521983302435";
 
-    // Abre o WhatsApp com a mensagem
-    window.open(`https://wa.me/${numero}?text=${mensagem}`, "_blank");
+    window.location.href = `https://wa.me/${numero}?text=${mensagem}`;
 });
 <\script>
 </body>
