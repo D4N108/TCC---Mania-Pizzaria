@@ -54,6 +54,7 @@ header.site-header{
   object-fit:contain;
   vertical-align:top;
   margin-top: -64px;
+  items-align: left;
 }
 .img-logo:hover{
    transform: scale(1.04);         /* leve aumento */
