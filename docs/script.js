@@ -147,7 +147,7 @@ document.addEventListener('click', (ev)=>{
         let totalFormatado = currency(totalValor); // "R$ 12,34"
 
         // Mensagem pedida: "Olá, desejo pedir (pedido) (preço)."
-        let mensagem = `Olá, desejo pedir: ${pedidos} (${totalFormatado}).`;
+        let mensagem = `Olá, desejo pedir: ${pedidos}. Total (${totalFormatado}). <br> Qual forma de pagamento? <br> Cartão (), Dinheiro() ou pix(). Use * para sinalizar a forma de pagamento.`;
 
         // monta URL do WhatsApp
         let url = "https://wa.me/" + NUMERO_PIZZARIA + "?text=" + encodeURIComponent(mensagem);
