@@ -226,37 +226,5 @@
   </div>
 </footer>
 
-  <script>
- document.getElementById("checkoutBtn").addEventListener("click", function (e) {
-    e.preventDefault();
-
-    let cart = JSON.parse(localStorage.getItem('pm_cart_final_v1') || '{}');
-    let items = Object.values(cart);
-
-    if (items.length === 0) {
-        alert("Seu carrinho está vazio.");
-        return;
-    }
-
-    // monta o pedido
-    let pedido = items.map(i => `${i.qty}x ${i.name}`).join(", ");
-    let total = items.reduce((s, i) => s + i.price * i.qty, 0).toFixed(2).replace('.', ',');
-
-    // prompt da mensagem
-    let extra = prompt("Deseja adicionar alguma observação ao pedido? (opcional)");
-
-    let mensagem = `Olá, desejo pedir ${pedido}. Total: R$ ${total}.`;
-
-    if (extra && extra.trim() !== "") {
-        mensagem += " Observação: " + extra.trim();
-    }
-
-    mensagem = encodeURIComponent(mensagem);
-
-    let numero = "5521983302435";
-
-    window.location.href = `https://wa.me/${numero}?text=${mensagem}`;
-});
-<\script>
 </body>
 </html>
