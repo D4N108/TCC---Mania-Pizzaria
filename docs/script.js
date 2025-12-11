@@ -129,7 +129,6 @@ document.addEventListener('click', (ev)=>{
 
     // WHATSAPP CHECKOUT AQUI
     if(ev.target.matches('#checkoutBtn') || ev.target.closest('#checkoutBtn')){
-        // evita que um <a> pai navegue imediatamente
         ev.preventDefault();
 
         if(Object.keys(cart).length === 0){
@@ -137,25 +136,27 @@ document.addEventListener('click', (ev)=>{
             return;
         }
 
-        // Criar texto do pedido: "2x Pizza, 1x Coca"
-        let pedidos = Object.values(cart)
+        // Lista de itens em linha separada
+        let itensLista = Object.values(cart)
             .map(it => `${it.qty}x ${it.name}`)
-            .join(', ');
+            .join('\n');
 
-        // Total numérico e moeda
-        let totalValor = cartTotal(); // número puro
-        let totalFormatado = currency(totalValor); // "R$ 12,34"
+        let totalValor = cartTotal();
+        let totalFormatado = currency(totalValor);
 
-        // Mensagem pedida: "Olá, desejo pedir (pedido) (preço)."
-        let mensagem = `Olá, desejo pedir: ${pedidos}. Total (${totalFormatado})';
+        // NOVA MENSAGEM COMPLETA
+        let mensagem = 
+`Olá, gostaria de pedir:
+${itensLista}
+Preço: ${totalFormatado}
 
-        // monta URL do WhatsApp
+Quais formas de pagamento? Cartão () Pix() ou dinheiro ()
+Marque um * na forma de pagamento`;
+
         let url = "https://wa.me/" + NUMERO_PIZZARIA + "?text=" + encodeURIComponent(mensagem);
 
-        // abre em nova aba
         window.open(url, "_blank");
 
-        // limpa carrinho
         cart = {};
         save();
         closeCart();
