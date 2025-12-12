@@ -306,58 +306,73 @@
 </style>
 
 <script>
-// Carrossel deslizando 3 cards por clique
-function setupSetasCarrossel() {
-  document.querySelectorAll('.setas').forEach(container => {
-    const track = container.querySelector('.carousel-personalizado');
-    const btnLeft = container.querySelector('.seta-esq');
-    const btnRight = container.querySelector('.seta-dir');
+// Carrossel exibindo 3 por vez (páginas)
+function setupCarrosselPaginas() {
+    document.querySelectorAll('.setas').forEach(container => {
 
-    if (!track) return;
+        const track = container.querySelector('.carousel-personalizado');
+        const btnLeft = container.querySelector('.seta-esq');
+        const btnRight = container.querySelector('.seta-dir');
 
-    // Captura a largura de UM card
-    function cardWidth() {
-      const card = track.querySelector('.card');
-      if (!card) return 300;
-      const styles = window.getComputedStyle(card);
-      const margin = parseFloat(styles.marginLeft) + parseFloat(styles.marginRight);
-      return card.offsetWidth + margin;
-    }
+        if (!track) return;
 
-    // Passo = 3 cards
-    function step() {
-      return cardWidth() * 3;
-    }
+        const cards = Array.from(track.querySelectorAll('.card'));
+        const total = cards.length;
+        const porPagina = 3;
+        let paginaAtual = 0;
 
-    function updateButtons() {
-      const maxScrollLeft = track.scrollWidth - track.clientWidth - 2;
-      btnLeft.disabled = track.scrollLeft <= 2;
-      btnRight.disabled = track.scrollLeft >= maxScrollLeft;
-    }
+        // Ajusta a largura do track para caber todos
+        function ajustarLargura() {
+            const card = cards[0];
+            if (!card) return;
+            const estilos = window.getComputedStyle(card);
+            const margem = parseFloat(estilos.marginLeft) + parseFloat(estilos.marginRight);
+            const largura = (card.offsetWidth + margem) * total;
+            track.style.width = largura + "px";
+        }
 
-    btnLeft.addEventListener('click', () => {
-      track.scrollBy({ left: -step(), behavior: 'smooth' });
-      setTimeout(updateButtons, 300);
+        function atualizarCarrossel() {
+            const card = cards[0];
+            if (!card) return;
+
+            const estilos = window.getComputedStyle(card);
+            const margem = parseFloat(estilos.marginLeft) + parseFloat(estilos.marginRight);
+            const largura = card.offsetWidth + margem;
+
+            const deslocamento = paginaAtual * largura * porPagina;
+
+            track.style.transform = `translateX(-${deslocamento}px)`;
+
+            // Controle de botões
+            btnLeft.disabled = paginaAtual === 0;
+            btnRight.disabled = (paginaAtual + 1) * porPagina >= total;
+        }
+
+        btnRight.addEventListener('click', () => {
+            if ((paginaAtual + 1) * porPagina < total) {
+                paginaAtual++;
+                atualizarCarrossel();
+            }
+        });
+
+        btnLeft.addEventListener('click', () => {
+            if (paginaAtual > 0) {
+                paginaAtual--;
+                atualizarCarrossel();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            ajustarLargura();
+            atualizarCarrossel();
+        });
+
+        ajustarLargura();
+        atualizarCarrossel();
     });
-
-    btnRight.addEventListener('click', () => {
-      track.scrollBy({ left: step(), behavior: 'smooth' });
-      setTimeout(updateButtons, 300);
-    });
-
-    track.addEventListener('scroll', () => {
-      requestAnimationFrame(updateButtons);
-    });
-
-    window.addEventListener('resize', () => {
-      setTimeout(updateButtons, 300);
-    });
-
-    updateButtons();
-  });
 }
 
-document.addEventListener('DOMContentLoaded', setupSetasCarrossel);
+document.addEventListener('DOMContentLoaded', setupCarrosselPaginas);
 </script>
 
 
