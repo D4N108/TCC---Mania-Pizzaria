@@ -81,7 +81,9 @@
       <h3>Pizzas salgadas</h3>
       <div class="setas">
   <button class="seta-btn seta-esq" aria-label="Scroll esquerda">‹</button>
-    <div class="grid">
+
+    <!-- AQUI FOI FEITA A ALTERAÇÃO: grid + carousel-personalizado -->
+    <div class="grid carousel-personalizado">
         <div class="card">
         <div class="imgwrap">
           <img src="https://superpizzapan.com.br/wp-content/uploads/2024/04/quatro-queijos.png" alt="">
@@ -191,9 +193,6 @@
   </div>
 </main>
 
-
-
-  
 <aside class="cart-panel" id="cartPanel">
   <header><h4>Confira seu pedido</h4>
     <button id="closeCart" class="icon-btn">✕</button>
@@ -261,7 +260,7 @@
 }
 
 /* FAIXA DESLIZANTE */
-.carousel-personalizado {
+.grid.carousel-personalizado {
   display: flex;
   gap: 20px;
   overflow-x: auto;
@@ -286,9 +285,6 @@
   border-radius: 50%;
   cursor: pointer;
   z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
@@ -298,75 +294,61 @@
 
 .seta-btn[disabled] {
   opacity: 0.35;
-  cursor: default;
 }
 
 /* hover */
 .seta-btn:hover:not([disabled]) { background: #8f2b1b; }
 
-/* garanta que os cards não encolham ao colocar dentro do carrossel */
-.carousel-personalizado .card {
-  flex: 0 0 auto; /* mantém largura fixa dos cards */
+.grid.carousel-personalizado .card {
+  flex: 0 0 auto;
+  width: 260px;
 }
-  
-  
 </style>
-  
- <script>
-   // Inicializa todos os carrosseis com setas
+
+<script>
+// Inicializa o carrossel
 function setupSetasCarrossel() {
   document.querySelectorAll('.setas').forEach(container => {
     const track = container.querySelector('.carousel-personalizado');
     const btnLeft = container.querySelector('.seta-esq');
     const btnRight = container.querySelector('.seta-dir');
 
-    if(!track || !btnLeft || !btnRight) return;
+    if(!track) return;
 
-    const step = Math.max(Math.round(track.clientWidth * 0.7), 260); // quanto rolar por clique
+    function step() {
+      return Math.max(Math.round(track.clientWidth * 0.7), 260);
+    }
 
-    // Função de atualização do estado (habilita/desabilita setas)
     function updateButtons() {
-      // small buffer para problemas de arredondamento
       const maxScrollLeft = track.scrollWidth - track.clientWidth - 1;
       btnLeft.disabled = track.scrollLeft <= 2;
       btnRight.disabled = track.scrollLeft >= maxScrollLeft;
     }
 
-    // Clique esquerda
     btnLeft.addEventListener('click', () => {
-      track.scrollBy({ left: -step, behavior: 'smooth' });
+      track.scrollBy({ left: -step(), behavior: 'smooth' });
+      setTimeout(updateButtons, 150);
     });
 
-    // Clique direita
     btnRight.addEventListener('click', () => {
-      track.scrollBy({ left: step, behavior: 'smooth' });
+      track.scrollBy({ left: step(), behavior: 'smooth' });
+      setTimeout(updateButtons, 150);
     });
 
-    // Quando o usuário arrasta/scrolla manualmente, atualiza botões
     track.addEventListener('scroll', () => {
-      // throttle leve via requestAnimationFrame
-      if(window.requestAnimationFrame) {
-        window.requestAnimationFrame(updateButtons);
-      } else {
-        updateButtons();
-      }
+      requestAnimationFrame(updateButtons);
     });
 
-    // Atualiza ao redimensionar (layout muda)
-    window.addEventListener('resize', updateButtons);
+    window.addEventListener('resize', () => {
+      setTimeout(updateButtons, 150);
+    });
 
-    // Inicializa estado
     updateButtons();
   });
 }
 
-// Executa após DOM pronto
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', setupSetasCarrossel);
-} else {
-  setupSetasCarrossel();
-}
- </script>
-  
+document.addEventListener('DOMContentLoaded', setupSetasCarrossel);
+</script>
+
 </body>
 </html>
