@@ -306,33 +306,43 @@
 </style>
 
 <script>
-// Inicializa o carrossel
+// Carrossel deslizando 3 cards por clique
 function setupSetasCarrossel() {
   document.querySelectorAll('.setas').forEach(container => {
     const track = container.querySelector('.carousel-personalizado');
     const btnLeft = container.querySelector('.seta-esq');
     const btnRight = container.querySelector('.seta-dir');
 
-    if(!track) return;
+    if (!track) return;
 
+    // Captura a largura de UM card
+    function cardWidth() {
+      const card = track.querySelector('.card');
+      if (!card) return 300;
+      const styles = window.getComputedStyle(card);
+      const margin = parseFloat(styles.marginLeft) + parseFloat(styles.marginRight);
+      return card.offsetWidth + margin;
+    }
+
+    // Passo = 3 cards
     function step() {
-      return Math.max(Math.round(track.clientWidth * 0.7), 260);
+      return cardWidth() * 3;
     }
 
     function updateButtons() {
-      const maxScrollLeft = track.scrollWidth - track.clientWidth - 1;
+      const maxScrollLeft = track.scrollWidth - track.clientWidth - 2;
       btnLeft.disabled = track.scrollLeft <= 2;
       btnRight.disabled = track.scrollLeft >= maxScrollLeft;
     }
 
     btnLeft.addEventListener('click', () => {
       track.scrollBy({ left: -step(), behavior: 'smooth' });
-      setTimeout(updateButtons, 150);
+      setTimeout(updateButtons, 300);
     });
 
     btnRight.addEventListener('click', () => {
       track.scrollBy({ left: step(), behavior: 'smooth' });
-      setTimeout(updateButtons, 150);
+      setTimeout(updateButtons, 300);
     });
 
     track.addEventListener('scroll', () => {
@@ -340,7 +350,7 @@ function setupSetasCarrossel() {
     });
 
     window.addEventListener('resize', () => {
-      setTimeout(updateButtons, 150);
+      setTimeout(updateButtons, 300);
     });
 
     updateButtons();
@@ -349,6 +359,7 @@ function setupSetasCarrossel() {
 
 document.addEventListener('DOMContentLoaded', setupSetasCarrossel);
 </script>
+
 
 </body>
 </html>
