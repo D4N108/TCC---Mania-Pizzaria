@@ -81,9 +81,7 @@
       <h3>Pizzas salgadas</h3>
       <div class="setas">
   <button class="seta-btn seta-esq" aria-label="Scroll esquerda">‹</button>
-
-    <!-- AQUI FOI FEITA A ALTERAÇÃO: grid + carousel-personalizado -->
-    <div class="grid carousel-personalizado">
+    <div class="grid">
         <div class="card">
         <div class="imgwrap">
           <img src="https://superpizzapan.com.br/wp-content/uploads/2024/04/quatro-queijos.png" alt="">
@@ -100,6 +98,24 @@
           <button class="btn add" data-id="pizza2" data-name="Portuguesa" data-price="50.00">Adicionar</button>
       </div>
         <div class="card">
+        <div class="imgwrap">
+          <img src="https://superpizzapan.com.br/wp-content/uploads/2024/04/calabresa.png" alt="">
+       </div>
+          <h4>Calabresa</h4>
+          <p></p>
+          <div class="price">A partir de R$ 45,00</div>
+          <button class="btn add" data-id="pizza3" data-name="Calabresa" data-price="45.00">Adicionar</button>
+      </div>
+      <div class="card">
+        <div class="imgwrap">
+          <img src="https://superpizzapan.com.br/wp-content/uploads/2024/04/calabresa.png" alt="">
+       </div>
+          <h4>Calabresa</h4>
+          <p></p>
+          <div class="price">A partir de R$ 45,00</div>
+          <button class="btn add" data-id="pizza3" data-name="Calabresa" data-price="45.00">Adicionar</button>
+      </div>
+      <div class="card">
         <div class="imgwrap">
           <img src="https://superpizzapan.com.br/wp-content/uploads/2024/04/calabresa.png" alt="">
        </div>
@@ -175,6 +191,9 @@
   </div>
 </main>
 
+
+
+  
 <aside class="cart-panel" id="cartPanel">
   <header><h4>Confira seu pedido</h4>
     <button id="closeCart" class="icon-btn">✕</button>
@@ -231,30 +250,24 @@
 </footer>
 
 <style>
-
 /* CONTAINER DAS SETAS */
 .setas {
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
-  overflow: hidden; /* impede mostrar mais que 3 */
+  overflow: hidden;
   margin-bottom: 30px;
 }
 
-/* FAIXA DESLIZANTE REAL — NÃO PODE TER SCROLL */
-.grid.carousel-personalizado {
+/* FAIXA DESLIZANTE */
+.carousel-personalizado {
   display: flex;
   gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
   padding: 10px 6px;
-
-  /* ESSENCIAL: remover scroll manual */
-  overflow: hidden;
-  scroll-behavior: auto; 
   scrollbar-width: none;
-
-  /* Permite animação do transform */
-  transition: transform 0.35s ease;
 }
 
 /* esconder scrollbar em WebKit */
@@ -273,94 +286,87 @@
   border-radius: 50%;
   cursor: pointer;
   z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
+/* posições específicas */
 .seta-esq { left: 8px; }
 .seta-dir { right: 8px; }
 
-.seta-btn[disabled] { opacity: 0.35; }
+.seta-btn[disabled] {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* hover */
 .seta-btn:hover:not([disabled]) { background: #8f2b1b; }
 
-/* Cada card mantém 260px */
-.grid.carousel-personalizado .card {
-  flex: 0 0 auto;
-  width: 260px;
+/* garanta que os cards não encolham ao colocar dentro do carrossel */
+.carousel-personalizado .card {
+  flex: 0 0 auto; /* mantém largura fixa dos cards */
 }
-
+  
+  
 </style>
+  
+ <script>
+   // Inicializa todos os carrosseis com setas
+function setupSetasCarrossel() {
+  document.querySelectorAll('.setas').forEach(container => {
+    const track = container.querySelector('.carousel-personalizado');
+    const btnLeft = container.querySelector('.seta-esq');
+    const btnRight = container.querySelector('.seta-dir');
 
+    if(!track || !btnLeft || !btnRight) return;
 
-<script>
-// Carrossel exibindo 3 por vez (páginas)
-function setupCarrosselPaginas() {
-    document.querySelectorAll('.setas').forEach(container => {
+    const step = Math.max(Math.round(track.clientWidth * 0.7), 260); // quanto rolar por clique
 
-        const track = container.querySelector('.carousel-personalizado');
-        const btnLeft = container.querySelector('.seta-esq');
-        const btnRight = container.querySelector('.seta-dir');
+    // Função de atualização do estado (habilita/desabilita setas)
+    function updateButtons() {
+      // small buffer para problemas de arredondamento
+      const maxScrollLeft = track.scrollWidth - track.clientWidth - 1;
+      btnLeft.disabled = track.scrollLeft <= 2;
+      btnRight.disabled = track.scrollLeft >= maxScrollLeft;
+    }
 
-        if (!track) return;
-
-        const cards = Array.from(track.querySelectorAll('.card'));
-        const total = cards.length;
-        const porPagina = 3;
-        let paginaAtual = 0;
-
-        // Ajusta a largura do track para caber todos
-        function ajustarLargura() {
-            const card = cards[0];
-            if (!card) return;
-            const estilos = window.getComputedStyle(card);
-            const margem = parseFloat(estilos.marginLeft) + parseFloat(estilos.marginRight);
-            const largura = (card.offsetWidth + margem) * total;
-            track.style.width = largura + "px";
-        }
-
-        function atualizarCarrossel() {
-            const card = cards[0];
-            if (!card) return;
-
-            const estilos = window.getComputedStyle(card);
-            const margem = parseFloat(estilos.marginLeft) + parseFloat(estilos.marginRight);
-            const largura = card.offsetWidth + margem;
-
-            const deslocamento = paginaAtual * largura * porPagina;
-
-            track.style.transform = `translateX(-${deslocamento}px)`;
-
-            // Controle de botões
-            btnLeft.disabled = paginaAtual === 0;
-            btnRight.disabled = (paginaAtual + 1) * porPagina >= total;
-        }
-
-        btnRight.addEventListener('click', () => {
-            if ((paginaAtual + 1) * porPagina < total) {
-                paginaAtual++;
-                atualizarCarrossel();
-            }
-        });
-
-        btnLeft.addEventListener('click', () => {
-            if (paginaAtual > 0) {
-                paginaAtual--;
-                atualizarCarrossel();
-            }
-        });
-
-        window.addEventListener('resize', () => {
-            ajustarLargura();
-            atualizarCarrossel();
-        });
-
-        ajustarLargura();
-        atualizarCarrossel();
+    // Clique esquerda
+    btnLeft.addEventListener('click', () => {
+      track.scrollBy({ left: -step, behavior: 'smooth' });
     });
+
+    // Clique direita
+    btnRight.addEventListener('click', () => {
+      track.scrollBy({ left: step, behavior: 'smooth' });
+    });
+
+    // Quando o usuário arrasta/scrolla manualmente, atualiza botões
+    track.addEventListener('scroll', () => {
+      // throttle leve via requestAnimationFrame
+      if(window.requestAnimationFrame) {
+        window.requestAnimationFrame(updateButtons);
+      } else {
+        updateButtons();
+      }
+    });
+
+    // Atualiza ao redimensionar (layout muda)
+    window.addEventListener('resize', updateButtons);
+
+    // Inicializa estado
+    updateButtons();
+  });
 }
 
-document.addEventListener('DOMContentLoaded', setupCarrosselPaginas);
-</script>
-
-
+// Executa após DOM pronto
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setupSetasCarrossel);
+} else {
+  setupSetasCarrossel();
+}
+ </script>
+  
 </body>
 </html>
