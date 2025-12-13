@@ -1,30 +1,42 @@
 <?php
-$servidor = "localhost";
-$usuario = "root";
-$senha = "";
-$banco = "avaliacao";
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
+/* CONEXÃO */
+$conn = new mysqli("localhost", "root", "", "pizzaria_mania");
 if ($conn->connect_error) {
-    die("Erro de conexão: " . $conn->connect_error);
+    die("erro_conexao");
 }
 
-$nome = $_POST["nome"];
-$avaliacao = $_POST["avaliacao"];
+/* RECEBE DADOS */
+$name = trim($_POST['name'] ?? '');
+$msg  = trim($_POST['msg'] ?? '');
 
-// Insere cliente
-$sql_cliente = "INSERT INTO clientes (nome) VALUES ('$nome')";
-$conn->query($sql_cliente);
+/* VALIDAÇÃO REAL */
+if ($msg === '') {
+    die("dados_invalidos");
+}
 
-// Pega o id do cliente inserido
-$id_cliente = $conn->insert_id;
+/* SE NOME VIER VAZIO */
+if ($name === '') {
+    $name = 'Anônimo';
+}
 
-// Insere avaliação vinculada ao cliente
-$sql_avaliacao = "INSERT INTO avaliacoes (id_cliente, avaliacao) VALUES ($id_cliente, '$avaliacao')";
-$conn->query($sql_avaliacao);
+/* INSERT */
+$sql = "INSERT INTO avaliacoes (nome, mensagem) VALUES (?, ?)";
+$stmt = $conn->prepare($sql);
 
+if (!$stmt) {
+    die("erro_prepare");
+}
+
+$stmt->bind_param("ss", $name, $msg);
+
+if ($stmt->execute()) {
+    echo "Avaliação enviada!";
+} else {
+    echo "erro_insert";
+}
+
+$stmt->close();
 $conn->close();
-
-echo "OK";
-?>
