@@ -1,3 +1,6 @@
+
+
+
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -60,13 +63,43 @@
       <h4>Horário de funcionamento</h4>
       <div class="box">De quarta a domingo das 18h às 00h</div>
       <h4>Avaliações</h4>
-      <div class="box review-box">
-        <form id="reviewForm" onsubmit="event.preventDefault(); submitReview('reviewForm');">
-          <input type="text" name="name" placeholder="Seu nome" style="width:100%;padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)"><br>
-          <textarea name="msg" placeholder="Deixe aqui a sua avaliação!" style="width:100%;margin-top:8px;padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)"></textarea>
-          <button type="submit">Enviar avaliação</button>
-        </form>
-      </div>
+        <form action="salvar_avaliacao.php" method="POST" class="avaliacao-form">
+
+  <fieldset>
+    <legend>Deixe sua avaliação</legend>
+
+    <div class="form-group">
+      <label for="nome">Seu nome</label>
+      <input 
+        type="text" 
+        id="nome" 
+        name="name" 
+        placeholder="Digite seu nome"
+        autocomplete="name"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="mensagem">Mensagem</label>
+      <textarea 
+        id="mensagem" 
+        name="msg" 
+        placeholder="Escreva sua avaliação"
+        required
+        rows="4"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" id="submit-avaliacao">
+        Enviar avaliação
+      </button>
+    </div>
+
+  </fieldset>
+
+</form>
+
     </div>
     <div class="loc-right">
       <div style="border-radius:12px;overflow:hidden;background:#314b2f;height:450px;margin-bottom:18px">
@@ -139,29 +172,7 @@
     <p>© 2025 Pizzaria Mania – Todos os direitos reservados.</p>
   </div>
 </footer>
-<script>
-document.getElementById("form-avaliacao").addEventListener("submit", function (e) {
-    e.preventDefault(); // impede o envio normal
 
-    const formData = new FormData(this);
 
-    fetch("salvar_avaliacao.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(resposta => resposta.text())
-    .then(texto => {
-        alert("Avaliação salva! Agora deixe sua avaliação no Facebook ❤️");
-
-        // Abre diretamente a página de avaliações do Facebook
-        window.open("https://www.facebook.com/marcelopizza/reviews", "_blank");
-
-        // limpa o formulário
-        document.getElementById("form-avaliacao").reset();
-    });
-});
-</script>
-
-  
 </body>
 </html>
