@@ -174,28 +174,6 @@ function closeCart(){
     if(p) p.classList.remove('open'); 
 }
 
-// Formulário de Avaliação
-function submitReview(formId){
-    const t = document.getElementById(formId); 
-    if(!t) return;
-
-    const name = t.querySelector('[name=name]').value || 'Anônimo';
-    const msg = t.querySelector('[name=msg]').value || '';
-
-    if(!msg.trim()){ 
-        alert('Digite sua avaliação antes de enviar.'); 
-        return; 
-    }
-
-    const reviews = JSON.parse(localStorage.getItem('pm_reviews') || '[]'); 
-    reviews.unshift({name, msg, date:new Date().toISOString()}); 
-    
-    localStorage.setItem('pm_reviews', JSON.stringify(reviews));
-
-    t.reset(); 
-    alert('Avaliação enviada. Obrigado!');
-}
-
 window.addEventListener('load', ()=>{
     renderCart(); 
     updateCounts(); 
