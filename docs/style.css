@@ -271,7 +271,7 @@ main{
 .grid{
   display:flex;
   grid-template-columns:repeat(3,1fr);
-  gap:24px
+  gap:24px;
   flex-wrap:wrap;
   justify-content:center;
 }
@@ -312,7 +312,7 @@ main{
   overflow: hidden;
 }
 
-}
+
 .card .imgwrap {
   overflow:hidden;
   align-items: center;
@@ -326,7 +326,7 @@ main{
   border-radius: 12px;
   object-fit:cover; 
 }
-}
+
 .card.h3{
   font-size: 18px;
   margin:12px 0 6px;
@@ -595,4 +595,69 @@ main{
     justify-content: center;
   }
 }
+/* ===== Avaliação - manter design antigo no HTML novo ===== */
+
+.avaliacao-form {
+  background: #fff;
+  color: var(--red);
+  padding: 12px;
+  border-radius: 12px;
+  margin-top: 12px;
+}
+
+.avaliacao-form fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.avaliacao-form legend {
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--red);
+}
+
+.avaliacao-form .form-group {
+  margin-bottom: 10px;
+}
+
+.avaliacao-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.avaliacao-form input,
+.avaliacao-form textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.08);
+  font-family: inherit;
+}
+
+.avaliacao-form textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.avaliacao-form button {
+  width: 100%;
+  margin-top: 6px;
+  background: var(--red);
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.avaliacao-form button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
 
