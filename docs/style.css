@@ -660,4 +660,221 @@ main{
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
+/* ======================================= */
+/* HEADER MOBILE – LOGO CENTRALIZADA       */
+/* ======================================= */
+
+@media (max-width: 600px) {
+
+  .site-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--red);
+    min-height: 150px;      /* espaço garantido */
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  /* área da logo */
+  .header-left {
+    width: 100%;
+    height: 80px;          /* espaço fixo para logo */
+    display: flex;
+    align-items: center;   /* 👈 ISSO resolve o corte */
+    justify-content: center;
+    margin: 0;
+  }
+
+  .img-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .img-logo img {
+    max-height: 65px;      /* nunca estoura */
+    width: auto;
+    display: block;
+  }
+
+  /* menu abaixo da logo */
+  .mainnav {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 6px;
+  }
+
+  .mainnav a,
+  .mainnav button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 4px;
+  }
+
+  .mainnav .nav-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .mainnav span {
+    font-size: 11px;
+    line-height: 1;
+  }
+}
+/* ========================================= */
+/* HEADER MOBILE – LOGO CENTRALIZADA CORRETA */
+/* INDEX + CARDÁPIO                          */
+/* ========================================= */
+
+@media (max-width: 600px) {
+
+  /* topo vermelho */
+  .site-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: var(--red);
+    min-height: 160px;      /* espaço REAL para logo + menu */
+    padding-top: 12px;
+    padding-bottom: 8px;
+  }
+
+  /* container da logo */
+  .header-left {
+    width: 100%;
+    height: 80px;           /* área dedicada à logo */
+    display: flex;
+    align-items: center;    /* CENTRALIZA VERTICALMENTE */
+    justify-content: center;
+  }
+
+  /* imagem da logo */
+  .img-logo img {
+    max-height: 65px;
+    width: auto;
+    display: block;
+  }
+
+  /* menu abaixo da logo */
+  .mainnav {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 6px;
+  }
+
+  .mainnav a,
+  .mainnav button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 4px;
+    background: none;
+  }
+
+  .mainnav .nav-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .mainnav span {
+    font-size: 11px;
+    line-height: 1;
+  }
+}
+/* ===== CORREÇÃO LOGO CORTADA (MOBILE) ===== */
+@media (max-width: 600px) {
+
+  .img-logo {
+    margin-top: 0;        /* remove o puxão para cima */
+  }
+
+  header.site-header {
+    height: auto;         /* permite crescer */
+    padding-top: 16px;    /* espaço real para a logo */
+  }
+
+  .header-left {
+    align-items: center;  /* garante centralização */
+  }
+
+}
+/* ESPAÇO CORRETO ENTRE MENU FIXO E HERO (CARDÁPIO) */
+@media (max-width: 600px) {
+  main {
+    margin-top: 160px; /* mesma altura real do header mobile */
+  }
+}
+/* ===============================
+   RESPONSIVO – PÁGINA LOCAL
+   =============================== */
+
+@media (max-width: 768px) {
+
+  /* Container geral */
+  .location-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 16px;
+  }
+
+  /* Coluna esquerda */
+  .loc-left {
+    width: 100%;
+  }
+
+  .loc-left .box {
+    width: 100%;
+  }
+
+  /* Formulário */
+  .avaliacao-form {
+    width: 100%;
+  }
+
+  /* Coluna direita (mapa + contatos) */
+  .loc-right {
+    width: 100%;
+  }
+
+  /* Wrapper do iframe */
+  .loc-right > div:first-child {
+    height: auto !important;
+  }
+
+  /* Mapa responsivo */
+  .loc-right iframe {
+    width: 100% !important;
+    height: 300px !important;
+  }
+
+  /* Card de contatos */
+  .loc-right div[style*="background:#fff"] {
+    width: 100%;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 48px 16px;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+}
+
 
