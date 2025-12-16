@@ -11,83 +11,339 @@
   <link rel="manifest" href="img/site.webmanifest">
 <link rel="stylesheet" href="style.css">   
 <style>
-   main{margin-top:72px}
-  .hero{
-    width:100%;
-    background:linear-gradient(180deg, var(--red), var(--dark-red));
-    padding:18px 0 0;
-  }
+.hero{
+  width:100%;
+  background:linear-gradient(180deg, var(--red), var(--dark-red));
+  padding:0;               /* remove espaço em cima */
+}
 
-  .carousel-wrap{
-    max-width:1180px;
-    margin:0 auto;
-    position:relative;
-    border-radius:6px;
-    overflow:visible;
-    padding:0 14px;
-  }
+.carousel-wrap{
+  max-width:1180px;
+  margin:0 auto;
+  position:relative;
+  border-radius:8px;
+  overflow:hidden;
+  padding:0 14px;
+}
 
-  .carousel{
-    position:relative;
-    overflow:hidden;
-    border-radius:8px;
-    box-shadow:var(--shadow);
-  }
+.carousel{
+  position:relative;
+  overflow:hidden;
+  border-radius:8px;
+  box-shadow:var(--shadow);
+}
 
-  .slides{
-    display:flex;
-    transition:transform .7s cubic-bezier(.22,.9,.32,1);
-    will-change:transform;
-  }
+.slides{
+  display:flex;
+  transition:transform .7s cubic-bezier(.22,.9,.32,1);
+}
 
+/* remove qualquer overlay */
+.slide::after{
+  display:none;
+}
+/* ===== CARROSSEL – IMAGEM RESPONSIVA ===== */
+
+.slide{
+  min-width:100%;
+  height:420px;              /* desktop */
+  position:relative;
+  overflow:hidden;
+}
+
+.slide img{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;          /* preenche sem distorcer */
+  object-position:center;
+  display:block;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+@media (max-width:768px){
   .slide{
-    min-width:100%;
-    height:420px;
-    background-size:cover;
-    background-position:center;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    height:260px;            /* tablets */
+  }
+}
+
+@media (max-width:480px){
+  .slide{
+    height:220px;            /* celulares */
+  }
+}
+
+
+/* setas */
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:56px;
+  height:56px;
+  border-radius:10px;
+  background:rgba(0,0,0,0.35);
+  color:#fff;
+  border:none;
+  font-size:22px;
+  cursor:pointer;
+  z-index:10;
+}
+
+.arrow.left{left:12px}
+.arrow.right{right:12px}
+
+/* indicadores */
+.indicators{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:14px;
+  display:flex;
+  gap:8px;
+  z-index:10;
+}
+
+.dot{
+  width:10px;
+  height:10px;
+  background:rgba(255,255,255,0.6);
+  border-radius:50%;
+  cursor:pointer;
+}
+
+.dot.active{
+  width:18px;
+  border-radius:10px;
+  background:var(--accent);
+}
+/* ===== RESET DO BANNER ===== */
+.slider,
+.frame,
+.hero,
+.carousel-wrap,
+.carousel,
+.slides,
+.slide{
+  width:100%;
+  max-width:none;
+}
+
+/* ===== CARROSSEL ===== */
+
+.carousel-wrap{
+  padding:0;                 /* remove espaço lateral */
+}
+
+.carousel{
+  border-radius:0;           /* remove corte */
+}
+
+.slide{
+  height:420px;
+  position:relative;
+  overflow:hidden;
+  flex-shrink:0;
+}
+
+.slide img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+
+/* ===== RESPONSIVO ===== */
+
+@media (max-width:768px){
+  .slide{
+    height:280px;
+  }
+}
+
+@media (max-width:480px){
+  .slide{
+    height:220px;
+  }
+}
+/* ============================= */
+/* AJUSTE FINO RESPONSIVIDADE    */
+/* SEM ALTERAR O LAYOUT ATUAL    */
+/* ============================= */
+
+/* Garante que o hero não empurre o header */
+.slider,
+.frame,
+.hero {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Corrige somente o topo do carrossel */
+.carousel-wrap,
+.carousel {
+  height: auto;
+}
+
+/* Mantém a altura controlada APENAS do slide */
+.slide {
+  height: 420px; /* desktop original */
+}
+
+/* Garante preenchimento total SEM invadir o menu */
+.slide img {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* ---------- TABLET ---------- */
+@media (max-width: 768px) {
+  .slide {
+    height: 300px; /* ajuste fino */
+  }
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 480px) {
+  .slide {
+    height: 240px; /* não invade o header */
+  }
+}
+/* ============================= */
+/* MENU RESPONSIVO – SEM QUEBRAR */
+/* ============================= */
+
+/* Estado normal (desktop) permanece igual */
+
+/* -------- TABLET -------- */
+@media (max-width: 900px) {
+  .mainnav {
+    justify-content: space-evenly;
+    gap: 8px;
   }
 
-  .slide::after{
-    content:"";
-    position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));
+  .mainnav a,
+  .mainnav button {
+    padding: 8px 10px;
   }
 
-  .slide .inner{
-    position:relative; z-index:2; color:#fff; text-align:left; max-width:1100px; padding:40px;
-    display:flex; gap:30px; align-items:center;
+  .mainnav span {
+    font-size: 14px;
+  }
+}
+
+/* -------- MOBILE -------- */
+@media (max-width: 600px) {
+  .site-header {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .slide .text{
-    max-width:720px;
+  .mainnav {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* 🔑 permite quebrar linha */
+    gap: 6px;
+    padding: 6px 0;
   }
 
-  .slide h2{
-    margin:0;font-size:48px;line-height:1.02;letter-spacing:1px;font-weight:900;text-transform:uppercase;
+  .mainnav a,
+  .mainnav button {
+    flex-direction: column; /* ícone em cima, texto embaixo */
+    padding: 6px;
+    min-width: 64px;
   }
-  .slide h2 .gold{color:var(--accent)}
-  .slide p{margin-top:10px;font-size:18px;color:rgba(255,255,255,0.95)}
 
-    .arrow{
-    position:absolute;top:50%;transform:translateY(-50%);
-    width:56px;height:56px;border-radius:10px;background:rgba(255,255,255,0.12);color:#fff;border:none;display:flex;align-items:center;justify-content:center;font-size:22px;
-    cursor:pointer;backdrop-filter: blur(2px);
+  .mainnav .nav-icon {
+    width: 22px;
+    height: 22px;
+    margin: 0;
   }
-  .arrow.left{left:10px}
-  .arrow.right{right:10px}
-  .arrow:hover{background:rgba(255,255,255,0.18);transform:translateY(-50%) scale(1.03)}
 
-  /* indicators */
-  .indicators{
-    position:absolute;left:50%;transform:translateX(-50%);
-    bottom:12px;display:flex;gap:8px;z-index:6;}
-  .dot{width:10px;height:10px;background:rgba(255,255,255,0.4);border-radius:999px;cursor:pointer}
-  .dot.active{background:var(--accent);width:18px;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,0.25)}
+  .mainnav span {
+    font-size: 11px;
+    line-height: 1.2;
+  }
 
-    
+  .cart-count {
+    font-size: 10px;
+    top: -4px;
+    right: -4px;
+  }
+}
+/* ======================================= */
+/* HEADER MOBILE – CORREÇÃO DEFINITIVA     */
+/* ======================================= */
+
+@media (max-width: 600px) {
+
+  /* Header vermelho mais alto */
+  .site-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--red);
+    padding-top: 18px;
+    padding-bottom: 12px;
+  }
+
+  /* Área da logo */
+  .header-left {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .img-logo img {
+    max-width: 100px;
+    height: auto;
+    display: block;
+  }
+
+  /* Menu abaixo da logo */
+  .mainnav {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+  }
+
+  /* Botões do menu */
+  .mainnav a,
+  .mainnav button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 4px 6px;
+    background: none;
+  }
+
+  /* Ícones */
+  .mainnav .nav-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* Texto */
+  .mainnav span {
+    font-size: 11px;
+    line-height: 1;
+  }
+}
+
 
 </style>
 </head>
@@ -128,60 +384,44 @@
 <main>
 
   <section class="slider">
-    <div class="frame"> 
-      <section class="hero" id="inicio" aria-label="Destaques">
+  <div class="frame"> 
+    <section class="hero" id="inicio" aria-label="Destaques">
       <div class="carousel-wrap">
         <div class="carousel" id="carousel">
+
           <div class="slides" id="slides">
-            <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1601924582971-d69f1d6a5e8c?auto=format&fit=crop&w=1400&q=80')">
-              <div class="inner">
-                <div class="text">
-                  <h2><span class="gold">Portuguesa</span> — Patrimônio Brasileiro de Comer</h2>
-                  <p>Promoção especial — válido somente na Pizzaria. Aproveite o sabor tradicional com preço imperdível.</p>
-                </div>
-              </div>
+
+            <div class="slide">
+              <img src="img\456bee1e-04f0-4fd8-853c-a8f102850339.jfif" alt="Banner Pizzaria Mania">
             </div>
 
-            <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1594007654729-407eedc4be49?auto=format&fit=crop&w=1400&q=80')">
-              <div class="inner">
-                <div class="text">
-                  <h2>🍕 <span class="gold">Calabresa</span> — Sabor Inigualável</h2>
-                  <p>Feita com ingredientes fresquíssimos e muito tempero. Peça agora online ou retire na loja.</p>
-                </div>
-              </div>
+            <div class="slide">
+              <img src="img\928f58d0-11cd-4326-a3c8-a795ea200339.png" alt="Banner Pizzaria Mania">
             </div>
 
-            <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1628840042765-356c57aa1c4b?auto=format&fit=crop&w=1400&q=80')">
-              <div class="inner">
-                <div class="text">
-                  <h2>🍗 Frango com Catupiry — <span class="gold">Clássico</span></h2>
-                  <p>Combinação cremosa e irresistível. Garanta a sua mesa hoje mesmo.</p>
-                </div>
-              </div>
+            <div class="slide">
+              <img src="img\74397566-0814-4833-b053-00e224c9bc1a.jfif" alt="Banner Pizzaria Mania">
             </div>
 
-            <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1601924582971-d69f1d6a5e8c?auto=format&fit=crop&w=1400&q=80')">
-              <div class="inner">
-                <div class="text">
-                  <h2>🍅 Marguerita — <span class="gold">Tradicional</span></h2>
-                  <p>Molho artesanal, tomate fresco e manjericão. Simples e perfeito.</p>
-                </div>
-              </div>
+            <div class="slide">
+              <img src="img\24a638ea-687f-4037-8dbc-357be4a20b3c.jfif" alt="Banner Pizzaria Mania">
             </div>
 
-          </div> <!-- /.slides -->
+          </div>
 
-          <button class="arrow left" id="prev" aria-label="Anterior">‹</button>
-          <button class="arrow right" id="next" aria-label="Próximo">›</button>
+          <button class="arrow left" id="prev">‹</button>
+          <button class="arrow right" id="next">›</button>
 
-          <div class="indicators" id="dots" aria-hidden="false"></div>
-        </div> <!-- /.carousel -->
-      </div> <!-- /.carousel-wrap -->
-    </div>
-    <div class="dots">
-      <span style="display:inline-block;width:12px;height:8px;background:var(--gold);border-radius:6px"></span>
-    </div>
-  </section>
+          <div class="indicators" id="dots"></div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+
+
+
 
   <section class="cat-strip">
     <div class="cat-row"><a href="cardapio.html">
