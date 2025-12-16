@@ -1,42 +1,19 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+require "db.php";
 
-/* CONEXÃO */
-$conn = new mysqli("localhost", "root", "", "pizzaria_mania");
-if ($conn->connect_error) {
-    die("erro_conexao");
+if (!isset($_POST['msg']) || trim($_POST['msg']) === "") {
+    header("Location: avaliacoes.php?erro=1");
+    exit;
 }
 
-/* RECEBE DADOS */
-$name = trim($_POST['name'] ?? '');
-$msg  = trim($_POST['msg'] ?? '');
+$nome = $_POST['name'];
+$msg  = $_POST['msg'];
 
-/* VALIDAÇÃO REAL */
-if ($msg === '') {
-    die("dados_invalidos");
-}
+$stmt = $conn->prepare(
+    "INSERT INTO avaliacoes (nome, mensagem) VALUES (?, ?)"
+);
+$stmt->bind_param("ss", $nome, $msg);
+$stmt->execute();
 
-/* SE NOME VIER VAZIO */
-if ($name === '') {
-    $name = 'Anônimo';
-}
-
-/* INSERT */
-$sql = "INSERT INTO avaliacoes (nome, mensagem) VALUES (?, ?)";
-$stmt = $conn->prepare($sql);
-
-if (!$stmt) {
-    die("erro_prepare");
-}
-
-$stmt->bind_param("ss", $name, $msg);
-
-if ($stmt->execute()) {
-    echo "Avaliação enviada!";
-} else {
-    echo "erro_insert";
-}
-
-$stmt->close();
-$conn->close();
+header("Location: avaliacoes.php?sucesso=1");
+exit;
