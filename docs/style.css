@@ -879,4 +879,47 @@ main{
   }
 }
 
+/* ===============================
+   CARRINHO RESPONSIVO (MOBILE)
+   =============================== */
+
+@media (max-width: 600px) {
+
+  .cart-panel {
+    width: 100vw;          /* ocupa toda a largura */
+    right: -100vw;         /* começa fora da tela */
+    border-radius: 0;
+  }
+
+  .cart-panel.open {
+    right: 0;
+  }
+
+  .cart-panel header {
+    padding: 14px;
+  }
+
+  .cart-items {
+    padding: 12px;
+  }
+
+  .cart-row {
+    gap: 12px;
+  }
+
+  .cart-row img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .qty-controls {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .checkout {
+    font-size: 16px;
+    padding: 14px;
+  }
+}
 
