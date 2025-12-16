@@ -291,6 +291,7 @@ main{
   padding-top: 64px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
+  position:relative
 }
 
 
@@ -303,13 +304,14 @@ main{
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: -46px;
+  top: -60px;
   width: 120px;
   height: 120px;
   border-radius: 50%;
   border: 10px solid #fff;
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
   overflow: hidden;
+  z-index:1
 }
 
 
